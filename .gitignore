@@ -1,0 +1,57 @@
+# --- Local tool / agent config -------------------------------------------
+# Machine-specific: holds absolute paths from the local user's home directory.
+.claude/settings.local.json
+.claude/*.local.json
+
+# --- Secrets --------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+secrets.*
+credentials.*
+
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# --- ESO runtime artefacts ------------------------------------------------
+# Saved variables are per-account game state, not source. They live under
+# live/SavedVariables/ but are easy to copy in here while debugging.
+SavedVariables/
+*.lua.bak
+# The client's crash dumps, which quote in-game character and account names.
+Errors/
+*.dmp
+
+# --- Release packaging ----------------------------------------------------
+*.zip
+dist/
+build/
+
+# --- Editors / IDEs -------------------------------------------------------
+.vscode/
+.idea/
+*.sublime-workspace
+*.swp
+*~
+
+# --- OS -------------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# --- Misc -----------------------------------------------------------------
+*.log
+*.orig
+*.rej
