@@ -4,6 +4,10 @@ An ESO addon that answers one question at the Undaunted quartermasters: **is a
 Mystery Coffer or a curated shoulder coffer the cheaper way to finish your
 monster set collection?**
 
+![The advisor panel at Urgarlag Chief-bane: 41 of 102 shoulders collected,
+mystery coffers at 1.7 keys per new shoulder against 8 for curated, and the
+verdict "Buy MYSTERY coffers"](img/merchant-popup.png)
+
 ## The problem
 
 The three quartermasters — Glirion the Redbeard, Maj al-Ragath and Urgarlag
@@ -57,6 +61,14 @@ Finish this vendor  ~55 keys the smart way (all mystery 98 / all curated 64)
   curated coffer is for a set you have already completed.
 - **`/coffer`** anywhere in the world for all three vendors, `/coffer 2` or
   `/coffer maj` for one, `/coffer settings` for the options panel.
+
+![The chat line printed as the store opens, giving the verdict and both
+per-shoulder costs in a single sentence](img/console-message.png)
+
+![A Mystery Coffer tooltip at the store, showing a 59.8% chance of a new
+shoulder, an effective cost of 1.7 keys per new shoulder, and a "Best buy here"
+verdict, beside the store list of curated coffers at 8 keys
+each](img/tooltip-info.png)
 
 ## How it gets its data
 
