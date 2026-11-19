@@ -1,8 +1,13 @@
 """Checks every translation against the English strings.
 
-Each Localization/*.lua file must define exactly the string ids en.lua defines,
-use the same <<n>> placeholders in each string, and be valid UTF-8 without a
-byte order mark (the game shows a BOM as junk at the top of the file).
+Each Localization/*.lua file must define exactly the string ids en.lua defines
+and be valid UTF-8 without a byte order mark (the game shows a BOM as junk at
+the top of the file). In each string:
+
+- the <<n>> placeholders that show a value must be the ones en.lua shows;
+- a plural choice, <<n[one/many]>>, may only read an argument en.lua's string
+  also uses, because the code passes no others. A language whose word does not
+  change can leave a choice out.
 
 Usage:  py -3 tests/check_localization.py
 """
@@ -15,7 +20,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FOLDER = os.path.join(ROOT, "MonsterCofferHelper", "Localization")
 
 STRING = re.compile(r'^ZO_CreateStringId\("(\w+)",\s*"((?:[^"\\]|\\.)*)"\)\s*$')
-PLACEHOLDER = re.compile(r"<<\d+>>")
+PLACEHOLDER = re.compile(r"<<(\d+)>>")
+PLURAL = re.compile(r"<<(\d+)\[([^\]]*)\]>>")
 
 
 def load(path):
@@ -61,7 +67,13 @@ def main():
             want = sorted(PLACEHOLDER.findall(english[name]))
             got = sorted(PLACEHOLDER.findall(strings[name]))
             if want != got:
-                report.append(f"{filename} {name} has placeholders {got}, en.lua has {want}")
+                report.append(f"{filename} {name} shows <<{'>>, <<'.join(got)}>>, en.lua shows <<{'>>, <<'.join(want)}>>")
+            passed = set(want) | {n for n, _ in PLURAL.findall(english[name])}
+            for n, forms in PLURAL.findall(strings[name]):
+                if n not in passed:
+                    report.append(f"{filename} {name} picks a plural from <<{n}>>, which en.lua does not use")
+                if "/" not in forms:
+                    report.append(f"{filename} {name} has a plural choice with one form: <<{n}[{forms}]>>")
 
     if report:
         sys.exit("\n".join(report))

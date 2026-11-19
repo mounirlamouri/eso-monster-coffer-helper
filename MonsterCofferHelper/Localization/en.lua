@@ -1,6 +1,9 @@
 ZO_CreateStringId("SI_MCH_TITLE", "Monster Coffer Helper")
 ZO_CreateStringId("SI_MCH_PANEL_TITLE", "Undaunted Shoulders")
 
+-- Numbers: the character between the whole and the decimal part
+ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ".")
+
 -- Verdicts
 ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Buy MYSTERY coffers")
 ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Buy CURATED coffers")
@@ -9,15 +12,15 @@ ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Collection complete - buy nothing")
 
 -- Panel body
 ZO_CreateStringId("SI_MCH_COLLECTED", "Collected")
-ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> shoulders across <<3>> sets (<<4>> missing)")
+ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> <<2[shoulder/shoulders]>> across <<3>> <<3[set/sets]>> (<<4>> missing)")
 ZO_CreateStringId("SI_MCH_MYSTERY", "Mystery")
 ZO_CreateStringId("SI_MCH_CURATED", "Curated")
-ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> key(s), <<2>> new -> <<3>> keys per new shoulder")
-ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Mystery stays cheaper until <<1>> shoulders are missing (<<2>> more to go).")
+ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> <<1[key/keys]>>, <<2>> new -> <<3>> <<4[key/keys]>> per new shoulder")
+ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Mystery stays cheaper until <<1>> <<1[shoulder is/shoulders are]>> missing (<<2>> more to go).")
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "You are past the break-even point; curated is cheaper from here on.")
 ZO_CreateStringId("SI_MCH_FINISH", "Finish this vendor")
-ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> keys the smart way (all mystery <<2>> / all curated <<3>>)")
-ZO_CreateStringId("SI_MCH_KEYS_HELD", "You hold <<1>> Undaunted Key(s)")
+ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[key/keys]>> the smart way (all mystery <<2>> / all curated <<3>>)")
+ZO_CreateStringId("SI_MCH_KEYS_HELD", "You hold <<1>> Undaunted <<1[Key/Keys]>>")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Still missing shoulders from")
 ZO_CreateStringId("SI_MCH_AND_MORE", "and <<1>> more")
 ZO_CreateStringId("SI_MCH_NO_DATA", "No shoulder data for this vendor.")
@@ -26,12 +29,12 @@ ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "assumed prices - visit the vendor to
 
 -- Chat
 ZO_CreateStringId("SI_MCH_CHAT_PREFIX", "Coffer")
-ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - <<3>> keys per new shoulder vs <<4>> curated (<<5>>/<<6>> collected)")
+ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - <<3>> <<7[key/keys]>> per new shoulder vs <<4>> curated (<<5>>/<<6>> collected)")
 ZO_CreateStringId("SI_MCH_CHAT_DONE", "<<1>>: every shoulder collected. Save your keys.")
 
 -- Tooltip
 ZO_CreateStringId("SI_MCH_TT_CHANCE", "New shoulder: <<1>>")
-ZO_CreateStringId("SI_MCH_TT_COST", "Effective cost: <<1>> keys per new shoulder")
+ZO_CreateStringId("SI_MCH_TT_COST", "Effective cost: <<1>> <<2[key/keys]>> per new shoulder")
 ZO_CreateStringId("SI_MCH_TT_BEST", "Best buy here")
 ZO_CreateStringId("SI_MCH_TT_WORSE", "The other coffer is cheaper per new shoulder")
 ZO_CreateStringId("SI_MCH_TT_SET_MISSING", "<<1>> of <<2>> shoulders still missing from this coffer")
@@ -39,8 +42,8 @@ ZO_CreateStringId("SI_MCH_TT_SET_DONE", "You already own every shoulder in this 
 
 -- Purchase confirmation
 ZO_CreateStringId("SI_MCH_GUARD_TITLE", "Not the best buy")
-ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Curated coffers are cheaper here right now: <<1>> keys per new shoulder, against <<2>> for a Mystery Coffer.")
-ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Mystery Coffers are cheaper here right now: <<1>> keys per new shoulder, against <<2>> for this curated coffer.")
+ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Curated coffers are cheaper here right now: <<1>> <<3[key/keys]>> per new shoulder, against <<2>> for a Mystery Coffer.")
+ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Mystery Coffers are cheaper here right now: <<1>> <<3[key/keys]>> per new shoulder, against <<2>> for this curated coffer.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "You already own every shoulder this coffer can give, so it can only be a duplicate.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Buy anyway")
 

@@ -1,6 +1,9 @@
 ZO_CreateStringId("SI_MCH_TITLE", "Monster Coffer Helper")
 ZO_CreateStringId("SI_MCH_PANEL_TITLE", "Épaulières des Indomptables")
 
+-- Numbers: the character between the whole and the decimal part
+ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ",")
+
 -- Verdicts
 ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Achetez des coffres MYSTÈRE")
 ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Achetez des coffres CIBLÉS")
@@ -9,29 +12,29 @@ ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Collection complète - n'achetez rien"
 
 -- Panel body
 ZO_CreateStringId("SI_MCH_COLLECTED", "Collection")
-ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> épaulières sur <<3>> ensembles (<<4>> manquantes)")
+ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> <<2[épaulière/épaulières]>> sur <<3>> <<3[ensemble/ensembles]>> (il en manque <<4>>)")
 ZO_CreateStringId("SI_MCH_MYSTERY", "Mystère")
 ZO_CreateStringId("SI_MCH_CURATED", "Ciblé")
-ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> clé(s), <<2>> de chances d'en avoir une nouvelle -> <<3>> clés par nouvelle épaulière")
-ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Le coffre mystère reste plus rentable jusqu'à <<1>> épaulières manquantes (encore <<2>>).")
+ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> <<1[clé/clés]>>, <<2>> de chances d'en avoir une nouvelle -> <<3>> <<4[clé/clés]>> par nouvelle épaulière")
+ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Le coffre mystère reste plus rentable jusqu'à ce qu'il ne manque plus que <<1>> <<1[épaulière/épaulières]>> (encore <<2>>).")
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Le seuil de rentabilité est franchi : les coffres ciblés sont désormais moins chers.")
 ZO_CreateStringId("SI_MCH_FINISH", "Terminer ce marchand")
-ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> clés en optimisant (tout en mystère <<2>> / tout en ciblé <<3>>)")
-ZO_CreateStringId("SI_MCH_KEYS_HELD", "Vous possédez <<1>> clé(s) des Indomptables")
+ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[clé/clés]>> en optimisant (tout en mystère <<2>> / tout en ciblé <<3>>)")
+ZO_CreateStringId("SI_MCH_KEYS_HELD", "Vous possédez <<1>> <<1[clé/clés]>> des Indomptables")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Ensembles dont il manque encore des épaulières")
-ZO_CreateStringId("SI_MCH_AND_MORE", "et <<1>> autre(s)")
+ZO_CreateStringId("SI_MCH_AND_MORE", "et <<1>> <<1[autre/autres]>>")
 ZO_CreateStringId("SI_MCH_NO_DATA", "Aucune donnée d'épaulières pour ce marchand.")
 ZO_CreateStringId("SI_MCH_PRICES_LEARNED", "prix relevés chez ce marchand")
 ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "prix supposés - parlez au marchand pour les confirmer")
 
 -- Chat
 ZO_CreateStringId("SI_MCH_CHAT_PREFIX", "Coffre")
-ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>> : <<2>> - <<3>> clés par nouvelle épaulière contre <<4>> en ciblé (<<5>>/<<6>> obtenues)")
+ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>> : <<2>> - <<3>> <<7[clé/clés]>> par nouvelle épaulière contre <<4>> en ciblé (<<5>>/<<6>> obtenues)")
 ZO_CreateStringId("SI_MCH_CHAT_DONE", "<<1>> : vous avez toutes les épaulières. Gardez vos clés.")
 
 -- Tooltip
 ZO_CreateStringId("SI_MCH_TT_CHANCE", "Chance d'une nouvelle épaulière : <<1>>")
-ZO_CreateStringId("SI_MCH_TT_COST", "Coût réel : <<1>> clés par nouvelle épaulière")
+ZO_CreateStringId("SI_MCH_TT_COST", "Coût réel : <<1>> <<2[clé/clés]>> par nouvelle épaulière")
 ZO_CreateStringId("SI_MCH_TT_BEST", "Meilleur achat ici")
 ZO_CreateStringId("SI_MCH_TT_WORSE", "L'autre coffre revient moins cher par nouvelle épaulière")
 ZO_CreateStringId("SI_MCH_TT_SET_MISSING", "Il vous manque encore <<1>> des <<2>> épaulières de ce coffre")
@@ -39,8 +42,8 @@ ZO_CreateStringId("SI_MCH_TT_SET_DONE", "Vous avez déjà toutes les épaulière
 
 -- Purchase confirmation
 ZO_CreateStringId("SI_MCH_GUARD_TITLE", "Pas le meilleur achat")
-ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Les coffres ciblés sont moins chers ici en ce moment : <<1>> clés par nouvelle épaulière, contre <<2>> pour un coffre mystère.")
-ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Les coffres mystère sont moins chers ici en ce moment : <<1>> clés par nouvelle épaulière, contre <<2>> pour ce coffre ciblé.")
+ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Les coffres ciblés sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour un coffre mystère.")
+ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Les coffres mystère sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour ce coffre ciblé.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "Vous avez déjà toutes les épaulières que ce coffre peut donner : vous n'obtiendrez qu'un doublon.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Acheter quand même")
 

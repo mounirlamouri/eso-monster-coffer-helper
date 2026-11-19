@@ -1,7 +1,7 @@
 """Runs the addon's Lua tests outside the game.
 
 The advisor is deliberately free of ESO API calls, so it loads into a plain Lua
-runtime with nothing stubbed. Model.lua, Store.lua and Guard.lua also load, because their
+runtime with nothing stubbed. Model.lua, Store.lua, Format.lua and Guard.lua also load, because their
 API calls only happen inside functions; only their pure helpers are tested.
 The rest of what touches the game API is not covered here.
 
@@ -26,6 +26,7 @@ SOURCES = [
     os.path.join(ADDON, "Constants.lua"),
     os.path.join(ADDON, "Advisor.lua"),
     os.path.join(ADDON, "Store.lua"),
+    os.path.join(ADDON, "Format.lua"),
     os.path.join(ADDON, "Model.lua"),
     os.path.join(ADDON, "Guard.lua"),
     os.path.join(ROOT, "tests", "advisor_test.lua"),
@@ -33,6 +34,7 @@ SOURCES = [
     os.path.join(ROOT, "tests", "model_test.lua"),
     os.path.join(ROOT, "tests", "guard_test.lua"),
     os.path.join(ROOT, "tests", "store_scan_test.lua"),
+    os.path.join(ROOT, "tests", "format_test.lua"),
 ]
 
 

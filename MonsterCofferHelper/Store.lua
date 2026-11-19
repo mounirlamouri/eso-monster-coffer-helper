@@ -240,9 +240,9 @@ function Store.Dump()
         local cleanName = zo_strformat(SI_TOOLTIP_ITEM_NAME, name or "")
         local cost = "-"
         if currencyType1 == CURT_UNDAUNTED_KEYS then
-            cost = currencyQuantity1 .. " keys"
+            cost = currencyQuantity1 .. (currencyQuantity1 == 1 and " key" or " keys")
         elseif currencyType2 == CURT_UNDAUNTED_KEYS then
-            cost = currencyQuantity2 .. " keys(2)"
+            cost = currencyQuantity2 .. (currencyQuantity2 == 1 and " key(2)" or " keys(2)")
         elseif price and price > 0 then
             cost = price .. " gold"
         end

@@ -111,6 +111,17 @@ local function InitLearned(db)
     MCH.learned = db.learnedByServer[server]
 end
 
+-- Settings earlier builds saved that nothing reads any more.
+local OBSOLETE_KEYS = {
+    "model",  -- a pool model choice from a build before 1.0.0, never released
+}
+
+local function DropObsoleteKeys(db)
+    for _, key in ipairs(OBSOLETE_KEYS) do
+        db[key] = nil
+    end
+end
+
 -- Cleared in place, so every holder of MCH.learned sees the same empty table.
 function MCH.ForgetLearned()
     for vendorId in pairs(MCH.learned) do
@@ -124,6 +135,7 @@ local function OnAddOnLoaded(_, addOnName)
 
     MCH.db = ZO_SavedVars:NewAccountWide("MonsterCofferHelper_Data", 1, nil, MCH.defaults)
     InitLearned(MCH.db)
+    DropObsoleteKeys(MCH.db)
 
     MCH.UI.Initialize()
     MCH.Settings.Initialize()

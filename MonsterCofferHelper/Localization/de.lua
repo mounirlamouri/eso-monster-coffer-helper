@@ -1,6 +1,9 @@
 ZO_CreateStringId("SI_MCH_TITLE", "Monster Coffer Helper")
 ZO_CreateStringId("SI_MCH_PANEL_TITLE", "Schultern der Unerschrockenen")
 
+-- Numbers: the character between the whole and the decimal part
+ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ",")
+
 -- Verdicts
 ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "ZUFALLSTRUHEN kaufen")
 ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "GEZIELTE Truhen kaufen")
@@ -9,11 +12,11 @@ ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Sammlung vollständig - nichts kaufen"
 
 -- Panel body
 ZO_CreateStringId("SI_MCH_COLLECTED", "Gesammelt")
-ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> Schultern aus <<3>> Sets (<<4>> fehlen)")
+ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> <<2[Schulter/Schultern]>> aus <<3>> <<3[Set/Sets]>> (<<4>> offen)")
 ZO_CreateStringId("SI_MCH_MYSTERY", "Zufall")
 ZO_CreateStringId("SI_MCH_CURATED", "Gezielt")
 ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> Schlüssel, <<2>> neu -> <<3>> Schlüssel pro neuer Schulter")
-ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Zufallstruhen bleiben günstiger, bis nur noch <<1>> Schultern fehlen (noch <<2>>).")
+ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Zufallstruhen bleiben günstiger, bis nur noch <<1>> <<1[Schulter fehlt/Schultern fehlen]>> (noch <<2>>).")
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Der Wendepunkt ist erreicht: Ab jetzt sind gezielte Truhen günstiger.")
 ZO_CreateStringId("SI_MCH_FINISH", "Diesen Händler abschließen")
 ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> Schlüssel bei bester Wahl (nur Zufall <<2>> / nur gezielt <<3>>)")
@@ -34,7 +37,7 @@ ZO_CreateStringId("SI_MCH_TT_CHANCE", "Chance auf eine neue Schulter: <<1>>")
 ZO_CreateStringId("SI_MCH_TT_COST", "Tatsächliche Kosten: <<1>> Schlüssel pro neuer Schulter")
 ZO_CreateStringId("SI_MCH_TT_BEST", "Hier die beste Wahl")
 ZO_CreateStringId("SI_MCH_TT_WORSE", "Die andere Truhe ist pro neuer Schulter günstiger")
-ZO_CreateStringId("SI_MCH_TT_SET_MISSING", "<<1>> von <<2>> Schultern aus dieser Truhe fehlen noch")
+ZO_CreateStringId("SI_MCH_TT_SET_MISSING", "<<1>> von <<2>> Schultern aus dieser Truhe <<1[fehlt/fehlen]>> noch")
 ZO_CreateStringId("SI_MCH_TT_SET_DONE", "Ihr habt bereits jede Schulter aus dieser Truhe - verschwendete Schlüssel")
 
 -- Purchase confirmation

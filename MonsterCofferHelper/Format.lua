@@ -8,20 +8,37 @@ MCH.Format = Format
 -- Small helpers
 --------------------------------------------------------------------------------
 
+local function IsWhole(value)
+    return math.abs(value - math.floor(value + 0.5)) < 0.05
+end
+
+-- "1.5" in English, "1,5" in French, German and Spanish.
+local function Decimal(text)
+    return (text:gsub("%.", GetString(SI_MCH_DECIMAL_SEPARATOR)))
+end
+
 -- Keys are shown to one decimal, except when the value is effectively whole --
 -- "8 keys" reads better than "8.0 keys".
 function Format.Num(value)
     if not value then return "?" end
-    local rounded = math.floor(value + 0.5)
-    if math.abs(value - rounded) < 0.05 then
-        return tostring(rounded)
+    if IsWhole(value) then
+        return tostring(math.floor(value + 0.5))
     end
-    return string.format("%.1f", value)
+    return Decimal(string.format("%.1f", value))
+end
+
+-- The number a string's <<n[key/keys]>> picks singular or plural from, for a
+-- value shown with Format.Num: 1 only when it reads "1", so "1 key" but
+-- "1.5 keys".
+function Format.Count(value)
+    if not value then return 0 end
+    if IsWhole(value) then return math.floor(value + 0.5) end
+    return math.ceil(value)
 end
 
 function Format.Percent(value)
     if not value then return "?" end
-    return string.format("%.1f%%", value * 100)
+    return Decimal(string.format("%.1f", value * 100)) .. "%"
 end
 
 local function Colored(color, text)
@@ -105,12 +122,12 @@ function Format.PanelBody(result)
     lines[#lines + 1] = Colored(C.head, GetString(SI_MCH_MYSTERY)) .. "  " ..
         zo_strformat(SI_MCH_LINE_OFFER,
             result.mysteryCost, Format.Percent(result.chanceNew),
-            Colored(C.value, Format.Num(result.mysteryPerNew)))
+            Colored(C.value, Format.Num(result.mysteryPerNew)), Format.Count(result.mysteryPerNew))
 
     lines[#lines + 1] = Colored(C.head, GetString(SI_MCH_CURATED)) .. "  " ..
         zo_strformat(SI_MCH_LINE_OFFER,
             result.curatedCost, Format.Percent(1),
-            Colored(C.value, Format.Num(result.curatedPerNew)))
+            Colored(C.value, Format.Num(result.curatedPerNew)), Format.Count(result.curatedPerNew))
 
     lines[#lines + 1] = ""
     lines[#lines + 1] = Colored(Format.VerdictColor(result.verdict), Format.VerdictText(result.verdict))
@@ -125,7 +142,8 @@ function Format.PanelBody(result)
             zo_strformat(SI_MCH_FINISH_LINE,
                 Colored(C.value, Format.Num(projection.optimal)),
                 Format.Num(projection.allMystery),
-                Format.Num(projection.allCurated))
+                Format.Num(projection.allCurated),
+                Format.Count(projection.optimal))
     end
 
     lines[#lines + 1] = Colored(C.dim, zo_strformat(SI_MCH_KEYS_HELD, MCH.Model.GetKeyCount()))
@@ -162,7 +180,8 @@ function Format.ChatSummary(result)
         Colored(C.value, Format.Num(result.mysteryPerNew)),
         Format.Num(result.curatedPerNew),
         result.owned,
-        result.total)
+        result.total,
+        Format.Count(result.mysteryPerNew))
 end
 
 function Format.PrintToChat(result)

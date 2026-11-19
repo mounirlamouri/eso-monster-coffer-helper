@@ -1,6 +1,9 @@
 ZO_CreateStringId("SI_MCH_TITLE", "Monster Coffer Helper")
 ZO_CreateStringId("SI_MCH_PANEL_TITLE", "Hombreras de los Intrépidos")
 
+-- Numbers: the character between the whole and the decimal part
+ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ",")
+
 -- Verdicts
 ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Compra cofres MISTERIOSOS")
 ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Compra cofres ESPECÍFICOS")
@@ -9,15 +12,15 @@ ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Colección completa - no compres nada"
 
 -- Panel body
 ZO_CreateStringId("SI_MCH_COLLECTED", "Colección")
-ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> hombreras de <<3>> conjuntos (faltan <<4>>)")
+ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> <<2[hombrera/hombreras]>> de <<3>> <<3[conjunto/conjuntos]>> (sin conseguir: <<4>>)")
 ZO_CreateStringId("SI_MCH_MYSTERY", "Misterioso")
 ZO_CreateStringId("SI_MCH_CURATED", "Específico")
-ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> llave(s), <<2>> de que sea nueva -> <<3>> llaves por hombrera nueva")
-ZO_CreateStringId("SI_MCH_SWITCH_HINT", "El cofre misterioso sigue siendo más barato hasta que falten <<1>> hombreras (quedan <<2>>).")
+ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> <<1[llave/llaves]>>, <<2>> de que sea nueva -> <<3>> <<4[llave/llaves]>> por hombrera nueva")
+ZO_CreateStringId("SI_MCH_SWITCH_HINT", "El cofre misterioso sigue siendo más barato hasta que <<1[falte/falten]>> <<1>> <<1[hombrera/hombreras]>> (<<2[queda/quedan]>> <<2>>).")
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Ya has pasado el punto de equilibrio: a partir de ahora el cofre específico es más barato.")
 ZO_CreateStringId("SI_MCH_FINISH", "Completar este vendedor")
-ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> llaves eligiendo bien (todo misterioso <<2>> / todo específico <<3>>)")
-ZO_CreateStringId("SI_MCH_KEYS_HELD", "Tienes <<1>> llave(s) de los Intrépidos")
+ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[llave/llaves]>> eligiendo bien (todo misterioso <<2>> / todo específico <<3>>)")
+ZO_CreateStringId("SI_MCH_KEYS_HELD", "Tienes <<1>> <<1[llave/llaves]>> de los Intrépidos")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Conjuntos a los que aún les faltan hombreras")
 ZO_CreateStringId("SI_MCH_AND_MORE", "y <<1>> más")
 ZO_CreateStringId("SI_MCH_NO_DATA", "No hay datos de hombreras para este vendedor.")
@@ -26,21 +29,21 @@ ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "precios supuestos - visita al vended
 
 -- Chat
 ZO_CreateStringId("SI_MCH_CHAT_PREFIX", "Cofre")
-ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - <<3>> llaves por hombrera nueva frente a <<4>> con el específico (<<5>>/<<6>> conseguidas)")
+ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - <<3>> <<7[llave/llaves]>> por hombrera nueva frente a <<4>> con el específico (<<5>>/<<6>> conseguidas)")
 ZO_CreateStringId("SI_MCH_CHAT_DONE", "<<1>>: tienes todas las hombreras. Guarda tus llaves.")
 
 -- Tooltip
 ZO_CreateStringId("SI_MCH_TT_CHANCE", "Probabilidad de hombrera nueva: <<1>>")
-ZO_CreateStringId("SI_MCH_TT_COST", "Coste real: <<1>> llaves por hombrera nueva")
+ZO_CreateStringId("SI_MCH_TT_COST", "Coste real: <<1>> <<2[llave/llaves]>> por hombrera nueva")
 ZO_CreateStringId("SI_MCH_TT_BEST", "La mejor compra aquí")
 ZO_CreateStringId("SI_MCH_TT_WORSE", "El otro cofre sale más barato por hombrera nueva")
-ZO_CreateStringId("SI_MCH_TT_SET_MISSING", "Aún te faltan <<1>> de las <<2>> hombreras de este cofre")
+ZO_CreateStringId("SI_MCH_TT_SET_MISSING", "Aún te <<1[falta/faltan]>> <<1>> de las <<2>> hombreras de este cofre")
 ZO_CreateStringId("SI_MCH_TT_SET_DONE", "Ya tienes todas las hombreras de este cofre - llaves desperdiciadas")
 
 -- Purchase confirmation
 ZO_CreateStringId("SI_MCH_GUARD_TITLE", "No es la mejor compra")
-ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Ahora mismo los cofres específicos son más baratos aquí: <<1>> llaves por hombrera nueva, frente a <<2>> con un cofre misterioso.")
-ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Ahora mismo los cofres misteriosos son más baratos aquí: <<1>> llaves por hombrera nueva, frente a <<2>> con este cofre específico.")
+ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Ahora mismo los cofres específicos son más baratos aquí: <<1>> <<3[llave/llaves]>> por hombrera nueva, frente a <<2>> con un cofre misterioso.")
+ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Ahora mismo los cofres misteriosos son más baratos aquí: <<1>> <<3[llave/llaves]>> por hombrera nueva, frente a <<2>> con este cofre específico.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "Ya tienes todas las hombreras que puede dar este cofre, así que solo puede darte un duplicado.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Comprar de todos modos")
 

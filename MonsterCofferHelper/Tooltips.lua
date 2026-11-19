@@ -17,7 +17,7 @@ end
 
 local function AppendMystery(tooltip, result)
     AddLine(tooltip, zo_strformat(SI_MCH_TT_CHANCE, MCH.Format.Percent(result.chanceNew)), RGB.plain)
-    AddLine(tooltip, zo_strformat(SI_MCH_TT_COST, MCH.Format.Num(result.mysteryPerNew)), RGB.plain)
+    AddLine(tooltip, zo_strformat(SI_MCH_TT_COST, MCH.Format.Num(result.mysteryPerNew), MCH.Format.Count(result.mysteryPerNew)), RGB.plain)
 
     if result.verdict == MCH.VERDICT_MYSTERY then
         AddLine(tooltip, GetString(SI_MCH_TT_BEST), RGB.good)
@@ -38,7 +38,7 @@ local function AppendCurated(tooltip, result, setIds)
     if missing then
         AddLine(tooltip, zo_strformat(SI_MCH_TT_SET_MISSING, missing, total), RGB.plain)
     end
-    AddLine(tooltip, zo_strformat(SI_MCH_TT_COST, MCH.Format.Num(result.curatedPerNew)), RGB.plain)
+    AddLine(tooltip, zo_strformat(SI_MCH_TT_COST, MCH.Format.Num(result.curatedPerNew), MCH.Format.Count(result.curatedPerNew)), RGB.plain)
 
     if result.verdict == MCH.VERDICT_CURATED then
         AddLine(tooltip, GetString(SI_MCH_TT_BEST), RGB.good)

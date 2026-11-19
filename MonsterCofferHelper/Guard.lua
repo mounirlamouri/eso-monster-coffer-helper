@@ -46,11 +46,13 @@ function Guard.Check(scan, result, entryIndex)
 end
 
 local function Message(reason, result)
-    local Num = MCH.Format.Num
+    local Num, Count = MCH.Format.Num, MCH.Format.Count
     if reason == Guard.REASON_MYSTERY_WORSE then
-        return zo_strformat(SI_MCH_GUARD_MYSTERY_WORSE, Num(result.curatedPerNew), Num(result.mysteryPerNew))
+        return zo_strformat(SI_MCH_GUARD_MYSTERY_WORSE,
+            Num(result.curatedPerNew), Num(result.mysteryPerNew), Count(result.curatedPerNew))
     elseif reason == Guard.REASON_CURATED_WORSE then
-        return zo_strformat(SI_MCH_GUARD_CURATED_WORSE, Num(result.mysteryPerNew), Num(result.curatedPerNew))
+        return zo_strformat(SI_MCH_GUARD_CURATED_WORSE,
+            Num(result.mysteryPerNew), Num(result.curatedPerNew), Count(result.mysteryPerNew))
     end
     return GetString(SI_MCH_GUARD_DUPLICATE)
 end
