@@ -59,6 +59,10 @@ Finish this vendor  ~55 keys the smart way (all mystery 98 / all curated 64)
 - **A chat line** when the store opens.
 - **Tooltip lines** on the coffers themselves — including a warning when you
   have already completed both of a curated coffer's sets.
+- **A confirmation before a purchase that isn't the best buy**: buying the
+  costlier coffer, or one that can only give a shoulder you already own, asks
+  first, with the numbers behind it and a "Buy anyway" button. It can be turned
+  off in the settings.
 - **`/coffer`** anywhere in the world for all three vendors, `/coffer 2` or
   `/coffer maj` for one, `/coffer settings` for the options panel.
 
