@@ -66,8 +66,11 @@ the missing shoulders are at another vendor.
   have already completed both of a curated coffer's sets.
 - **A confirmation before a purchase that isn't the best buy**: buying the
   costlier coffer, or one that can only give a shoulder you already own, asks
-  first, with the numbers behind it and a "Buy anyway" button. It can be turned
-  off in the settings.
+  first, with the numbers behind it and a "Buy anyway" button. Buying several
+  at once is checked too: more Mystery Coffers than it takes, on average, to
+  reach the point where curated becomes cheaper (the dialog says how many to
+  stop at), or more of a curated coffer than it has shoulders you're missing.
+  It can be turned off in the settings.
 - **`/coffer`** anywhere in the world for all three vendors and the total, `/coffer 2` or
   `/coffer maj` for one, `/coffer settings` for the options panel.
 

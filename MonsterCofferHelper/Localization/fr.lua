@@ -47,6 +47,8 @@ ZO_CreateStringId("SI_MCH_GUARD_TITLE", "Pas le meilleur achat")
 ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Les coffres ciblés sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour un coffre mystère.")
 ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Les coffres mystère sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour ce coffre ciblé.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "Vous avez déjà toutes les épaulières que ce coffre peut donner : vous n'obtiendrez qu'un doublon.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "En moyenne, <<2>> <<2[coffre mystère suffit/coffres mystère suffisent]>> pour atteindre le point où les coffres ciblés deviennent moins chers. En acheter <<1>> d'un coup le dépasserait probablement.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_CURATED", "Il ne vous manque que <<2>> <<2[épaulière/épaulières]>> de ce coffre : en acheter <<1>> donnerait au moins <<3>> <<3[doublon/doublons]>>.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Acheter quand même")
 
 -- Settings
@@ -58,7 +60,7 @@ ZO_CreateStringId("SI_MCH_SET_CHAT_TT", "Affiche un verdict d'une ligne dans le 
 ZO_CreateStringId("SI_MCH_SET_TOOLTIPS", "Compléter les infobulles des coffres")
 ZO_CreateStringId("SI_MCH_SET_TOOLTIPS_TT", "Ajoute vos chances et le coût réel en clés aux coffres de la boutique du marchand.")
 ZO_CreateStringId("SI_MCH_SET_CONFIRM", "Confirmer les achats qui ne sont pas le meilleur choix")
-ZO_CreateStringId("SI_MCH_SET_CONFIRM_TT", "Demande confirmation avant d'acheter le coffre le plus cher, ou un coffre qui ne peut donner qu'une épaulière que vous avez déjà.")
+ZO_CreateStringId("SI_MCH_SET_CONFIRM_TT", "Demande confirmation avant d'acheter le coffre le plus cher, un coffre qui ne peut donner qu'une épaulière que vous avez déjà, ou plus de coffres d'un coup qu'il n'est rentable d'en acheter.")
 ZO_CreateStringId("SI_MCH_SET_LOCK", "Verrouiller la position de la fenêtre")
 ZO_CreateStringId("SI_MCH_SET_RESET_POS", "Réinitialiser la position de la fenêtre")
 ZO_CreateStringId("SI_MCH_SET_MAXSETS", "Ensembles listés dans la fenêtre")

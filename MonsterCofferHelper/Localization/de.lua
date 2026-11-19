@@ -47,6 +47,8 @@ ZO_CreateStringId("SI_MCH_GUARD_TITLE", "Nicht die beste Wahl")
 ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Gezielte Truhen sind hier gerade günstiger: <<1>> Schlüssel pro neuer Schulter, gegenüber <<2>> für eine Zufallstruhe.")
 ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Zufallstruhen sind hier gerade günstiger: <<1>> Schlüssel pro neuer Schulter, gegenüber <<2>> für diese gezielte Truhe.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "Ihr habt bereits jede Schulter, die diese Truhe enthalten kann. Sie kann nur ein Duplikat geben.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "Im Schnitt <<2[bringt/bringen]>> euch <<2>> <<2[Zufallstruhe/Zufallstruhen]>> an den Punkt, ab dem gezielte Truhen günstiger sind. <<1>> auf einmal zu kaufen, geht wahrscheinlich darüber hinaus.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_CURATED", "Aus dieser Truhe <<2[fehlt/fehlen]>> euch nur noch <<2>> <<2[Schulter/Schultern]>>. <<1>> zu kaufen, ergibt mindestens <<3>> <<3[Duplikat/Duplikate]>>.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Trotzdem kaufen")
 
 -- Settings
@@ -58,7 +60,7 @@ ZO_CreateStringId("SI_MCH_SET_CHAT_TT", "Schreibt eine einzeilige Empfehlung in 
 ZO_CreateStringId("SI_MCH_SET_TOOLTIPS", "Truhen-Tooltips ergänzen")
 ZO_CreateStringId("SI_MCH_SET_TOOLTIPS_TT", "Zeigt eure Chancen und die tatsächlichen Schlüsselkosten an den Truhen im Laden des Händlers.")
 ZO_CreateStringId("SI_MCH_SET_CONFIRM", "Käufe bestätigen, die nicht die beste Wahl sind")
-ZO_CreateStringId("SI_MCH_SET_CONFIRM_TT", "Fragt nach, bevor ihr die teurere Truhe kauft oder eine Truhe, die nur eine Schulter geben kann, die ihr schon besitzt.")
+ZO_CreateStringId("SI_MCH_SET_CONFIRM_TT", "Fragt nach, bevor ihr die teurere Truhe kauft, eine Truhe, die nur eine Schulter geben kann, die ihr schon besitzt, oder mehr Truhen auf einmal, als sich lohnen.")
 ZO_CreateStringId("SI_MCH_SET_LOCK", "Fensterposition sperren")
 ZO_CreateStringId("SI_MCH_SET_RESET_POS", "Fensterposition zurücksetzen")
 ZO_CreateStringId("SI_MCH_SET_MAXSETS", "Im Fenster aufgeführte Sets")

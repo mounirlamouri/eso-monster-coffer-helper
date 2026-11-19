@@ -46,13 +46,17 @@ local function Project(pool, mysteryCost, curatedCost)
     local allCurated = curatedCost * M
 
     local switchAt = math.floor(mysteryCost * N / curatedCost)
-    local optimal
+    local optimal, mysteryCoffers
     if switchAt >= M then
         -- Already past the break-even point; curated all the way.
-        switchAt = M
-        optimal  = allCurated
+        switchAt       = M
+        optimal        = allCurated
+        mysteryCoffers = 0
     else
-        optimal = mysteryCost * N * (Harmonic(M) - Harmonic(switchAt)) + curatedCost * switchAt
+        -- How many Mystery Coffers it takes, on average, to get from M missing
+        -- down to the switch point.
+        mysteryCoffers = N * (Harmonic(M) - Harmonic(switchAt))
+        optimal        = mysteryCost * mysteryCoffers + curatedCost * switchAt
     end
 
     return {
@@ -61,6 +65,7 @@ local function Project(pool, mysteryCost, curatedCost)
         allCurated = allCurated,
         switchAt   = switchAt,
         switchToGo = M - switchAt,
+        mysteryCoffersToSwitch = mysteryCoffers,
     }
 end
 

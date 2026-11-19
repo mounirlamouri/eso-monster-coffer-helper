@@ -7,6 +7,10 @@ MCH.Guard = Guard
 -- Asking before a purchase that isn't the best buy
 --------------------------------------------------------------------------------
 --
+-- Buying several at once is checked as a whole too: more Mystery Coffers than
+-- it takes, on average, to reach the point where curated becomes cheaper, or
+-- more of a curated coffer than it has shoulders you're missing.
+--
 -- Every way of buying from a store -- right-click Buy, the buy-multiple dialog,
 -- the gamepad store, the large-purchase confirmation -- ends in the global
 -- BuyStoreItem. It is not a protected function, so a pre-hook sees every
@@ -20,17 +24,30 @@ local DIALOG_NAME = "MONSTER_COFFER_HELPER_BUY_ANYWAY"
 Guard.REASON_DUPLICATE     = "duplicate"
 Guard.REASON_MYSTERY_WORSE = "mysteryWorse"
 Guard.REASON_CURATED_WORSE = "curatedWorse"
+Guard.REASON_BULK_MYSTERY  = "bulkMystery"
+Guard.REASON_BULK_CURATED  = "bulkCurated"
 
--- Why buying store entry `entryIndex` is not the best buy, or nil when it is
--- fine or is not a coffer this addon knows about. `scan` is Store.current and
--- `result` the advisor's result for that vendor.
+-- How many Mystery Coffers to stop at: the average number it takes to reach
+-- the switch point, and at least one, since the next coffer is still worth it.
+local function MysteryStop(result)
+    local coffers = result.projection and result.projection.mysteryCoffersToSwitch or 0
+    return math.max(1, math.floor(coffers))
+end
+
+-- Why buying `quantity` of store entry `entryIndex` is not the best buy, or nil
+-- when it is fine or is not a coffer this addon knows about. `scan` is
+-- Store.current and `result` the advisor's result for that vendor. A bulk
+-- reason comes back with the number to stop at as a second value.
 -- Pure, so it can be tested outside the game.
-function Guard.Check(scan, result, entryIndex)
+function Guard.Check(scan, result, entryIndex, quantity)
     if not scan or not result then return nil end
+    quantity = quantity or 1
 
     if entryIndex == scan.mysteryIndex then
         if result.verdict == MCH.VERDICT_DONE then return Guard.REASON_DUPLICATE end
         if result.verdict == MCH.VERDICT_CURATED then return Guard.REASON_MYSTERY_WORSE end
+        local stop = MysteryStop(result)
+        if quantity > stop then return Guard.REASON_BULK_MYSTERY, stop end
         return nil
     end
 
@@ -42,10 +59,12 @@ function Guard.Check(scan, result, entryIndex)
     local missing = MCH.Advisor.CofferCounts(result.pool, setIds)
     if missing == 0 then return Guard.REASON_DUPLICATE end
     if result.verdict == MCH.VERDICT_MYSTERY then return Guard.REASON_CURATED_WORSE end
+    if quantity > missing then return Guard.REASON_BULK_CURATED, missing end
     return nil
 end
 
-local function Message(reason, result)
+-- The dialog's text for what Check returned.
+function Guard.Message(reason, result, stop, quantity)
     local Num, Count = MCH.Format.Num, MCH.Format.Count
     if reason == Guard.REASON_MYSTERY_WORSE then
         return zo_strformat(SI_MCH_GUARD_MYSTERY_WORSE,
@@ -53,6 +72,10 @@ local function Message(reason, result)
     elseif reason == Guard.REASON_CURATED_WORSE then
         return zo_strformat(SI_MCH_GUARD_CURATED_WORSE,
             Num(result.mysteryPerNew), Num(result.curatedPerNew), Count(result.mysteryPerNew))
+    elseif reason == Guard.REASON_BULK_MYSTERY then
+        return zo_strformat(SI_MCH_GUARD_BULK_MYSTERY, quantity, stop)
+    elseif reason == Guard.REASON_BULK_CURATED then
+        return zo_strformat(SI_MCH_GUARD_BULK_CURATED, quantity, stop, quantity - stop)
     end
     return GetString(SI_MCH_GUARD_DUPLICATE)
 end
@@ -81,12 +104,12 @@ local function OnBuyStoreItem(entryIndex, quantity)
     if not scan then return false end
 
     local result = MCH.Advisor.ForVendor(scan.vendorId)
-    local reason = Guard.Check(scan, result, entryIndex)
+    local reason, stop = Guard.Check(scan, result, entryIndex, quantity)
     if not reason then return false end
 
     ZO_Dialogs_ShowPlatformDialog(DIALOG_NAME,
         { entryIndex = entryIndex, quantity = quantity },
-        { mainTextParams = { Message(reason, result) } })
+        { mainTextParams = { Guard.Message(reason, result, stop, quantity or 1) } })
     return true
 end
 

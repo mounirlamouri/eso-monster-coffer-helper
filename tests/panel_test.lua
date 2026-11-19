@@ -157,6 +157,23 @@ local ok, err = pcall(function()
         Format.PrintTotal(Advisor.ForAllVendors())
         check("/coffer prints no total once everything is collected", #printed == 0, tostring(#printed))
     end
+
+    print("\nthe purchase confirmation's text")
+    do
+        local Guard = MCH.Guard
+        Shelves({ Pool({ 3, 3, 3, 1 }) })
+        local result = Advisor.ForVendor(1)
+        Has("bulk mystery", Guard.Message(Guard.REASON_BULK_MYSTERY, result, 23, 30),
+            "On average, 23 Mystery Coffers bring you to the point where curated coffers become cheaper. Buying 30 at once")
+        Has("bulk mystery, stopping at one", Guard.Message(Guard.REASON_BULK_MYSTERY, result, 1, 2),
+            "On average, 1 Mystery Coffer brings you")
+        Has("bulk curated", Guard.Message(Guard.REASON_BULK_CURATED, result, 1, 2),
+            "This coffer has only 1 shoulder you're missing, so buying 2 would give at least 1 duplicate.")
+        Has("bulk curated, plural", Guard.Message(Guard.REASON_BULK_CURATED, result, 4, 10),
+            "only 4 shoulders you're missing, so buying 10 would give at least 6 duplicates.")
+        Has("mystery is the worse buy", Guard.Message(Guard.REASON_MYSTERY_WORSE, result),
+            "Curated coffers are cheaper here right now: 8 keys per new shoulder")
+    end
 end)
 
 for name in pairs(FAKE) do _G[name] = saved[name] end

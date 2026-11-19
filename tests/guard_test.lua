@@ -93,5 +93,40 @@ do
     check("curated goes through", Guard.Check(SCAN, result, 2), nil)
 end
 
+print("\nbuying several mystery coffers at once")
+do
+    -- 10 of 12 missing, switching to curated at 1 missing: on average
+    -- 12 x (H(10) - H(1)) = 23.1 Mystery Coffers get there.
+    local result = Result({ 3, 3, 3, 1 })
+    check("23 go through", Guard.Check(SCAN, result, 1, 23), nil)
+    local reason, stop = Guard.Check(SCAN, result, 1, 24)
+    check("24 ask first", reason, Guard.REASON_BULK_MYSTERY)
+    check("saying to stop at 23", stop, 23)
+    check("a single one goes through", Guard.Check(SCAN, result, 1, 1), nil)
+    check("no quantity counts as one", Guard.Check(SCAN, result, 1), nil)
+end
+
+print("\nat the switch point, only one mystery coffer is worth it")
+do
+    local result = Result({ 3, 0, 0, 0, 0, 0, 0, 0 })
+    check("one goes through", Guard.Check(SCAN, result, 1, 1), nil)
+    local reason, stop = Guard.Check(SCAN, result, 1, 2)
+    check("two ask first", reason, Guard.REASON_BULK_MYSTERY)
+    check("saying to stop at 1", stop, 1)
+end
+
+print("\nbuying several of one curated coffer")
+do
+    -- Entry 3 holds sets 103 and 104, with one shoulder missing between them.
+    local result = Result({ 0, 0, 0, 1 })
+    check("one goes through", Guard.Check(SCAN, result, 3, 1), nil)
+    local reason, stop = Guard.Check(SCAN, result, 3, 2)
+    check("two ask first", reason, Guard.REASON_BULK_CURATED)
+    check("saying only 1 is missing", stop, 1)
+    check("a duplicate coffer is still reported as one", Guard.Check(SCAN, result, 2, 5), Guard.REASON_DUPLICATE)
+    check("mystery when curated is cheaper is still reported as such",
+        Guard.Check(SCAN, result, 1, 5), Guard.REASON_MYSTERY_WORSE)
+end
+
 print(string.format("\n%d check(s), %d failure(s)\n", checks, failures))
 if failures > 0 then error("guard tests failed", 0) end
