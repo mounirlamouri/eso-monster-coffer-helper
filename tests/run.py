@@ -1,8 +1,9 @@
 """Runs the addon's Lua tests outside the game.
 
 The advisor is deliberately free of ESO API calls, so it loads into a plain Lua
-runtime with nothing stubbed. Everything that does touch the game API lives in
-Model.lua / Store.lua / UI.lua and is not covered here.
+runtime with nothing stubbed. Model.lua and Store.lua also load, because their
+API calls only happen inside functions; only their pure helpers are tested.
+The rest of what touches the game API is not covered here.
 
 Usage:  py -3 tests/run.py
 Needs:  py -3 -m pip install lupa
@@ -25,8 +26,10 @@ SOURCES = [
     os.path.join(ADDON, "Constants.lua"),
     os.path.join(ADDON, "Advisor.lua"),
     os.path.join(ADDON, "Store.lua"),
+    os.path.join(ADDON, "Model.lua"),
     os.path.join(ROOT, "tests", "advisor_test.lua"),
     os.path.join(ROOT, "tests", "store_test.lua"),
+    os.path.join(ROOT, "tests", "model_test.lua"),
 ]
 
 

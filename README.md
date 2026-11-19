@@ -14,8 +14,8 @@ The three quartermasters — Glirion the Redbeard, Maj al-Ragath and Urgarlag
 Chief-bane — each sell two things for Undaunted Keys:
 
 - a **Mystery Coffer**, cheap, giving a random shoulder from that vendor's stock;
-- a **curated coffer** per set, several times the price, guaranteeing a shoulder
-  you don't own yet from that set.
+- **curated coffers**, each covering two sets, several times the price,
+  guaranteeing a shoulder you don't own yet from those sets.
 
 On paper the choice is arithmetic. In practice you can't do the arithmetic,
 because it needs three numbers the game never shows you in one place: which sets
@@ -57,8 +57,8 @@ Finish this vendor  ~55 keys the smart way (all mystery 98 / all curated 64)
 
 - **A panel** at the vendor, with the verdict and every number behind it.
 - **A chat line** when the store opens.
-- **Tooltip lines** on the coffers themselves — including a warning when a
-  curated coffer is for a set you have already completed.
+- **Tooltip lines** on the coffers themselves — including a warning when you
+  have already completed both of a curated coffer's sets.
 - **`/coffer`** anywhere in the world for all three vendors, `/coffer 2` or
   `/coffer maj` for one, `/coffer settings` for the options panel.
 
@@ -74,14 +74,17 @@ each](img/tooltip-info.png)
 
 | Question | Source |
 |---|---|
-| Which sets does this vendor stock? | `LibSets`' `undauntedChestId`, overridden by the vendor's actual store contents once seen |
+| Which sets does this vendor stock? | `LibSets`' `undauntedChestId`, plus any newer set found in the vendor's coffers |
 | How many shoulder variants per set? | `GetItemSetCollectionPieceInfo`, filtered to `EQUIP_TYPE_SHOULDERS` |
 | Which of them do I own? | `IsItemSetCollectionSlotUnlocked` |
+| What does each curated coffer hold? | The coffer's item link (`GetItemLinkContainerSetInfo`) |
 | What do the coffers cost? | Read off the store window in Undaunted Keys, with a configurable fallback |
 
-Reading the store rather than trusting a bundled table means stock rotations and
-price changes are picked up on their own. Learned stock and prices are saved
-account-wide, so `/coffer` stays accurate when you're nowhere near a vendor.
+Reading the store means price changes, and sets newer than LibSets' data, are
+picked up on their own. What the store shows can only add to LibSets' list,
+never shrink it. Learned stock and prices are saved account-wide, per server,
+so `/coffer` stays accurate when you're nowhere near a vendor and the PTS never
+leaks into live.
 
 ## Install
 
@@ -97,9 +100,10 @@ any missing dependency. Override the location with `--dest` or the
 Or copy the `MonsterCofferHelper` folder into
 `Documents\Elder Scrolls Online\live\AddOns\` by hand.
 
-Requires [LibSets](https://www.esoui.com/downloads/info2241-LibSets.html).
-[LibAddonMenu-2.0](https://www.esoui.com/downloads/info7-LibAddonMenu.html) is
-optional and only powers the settings panel.
+Requires [LibSets](https://www.esoui.com/downloads/info2241-LibSets.html)
+(AddOnVersion 9040 or newer).
+[LibAddonMenu-2.0](https://www.esoui.com/downloads/info7-LibAddonMenu.html)
+(43 or newer) is optional and only powers the settings panel.
 
 ## Tests
 
