@@ -32,6 +32,7 @@ SOURCES = [
     os.path.join(ROOT, "tests", "store_test.lua"),
     os.path.join(ROOT, "tests", "model_test.lua"),
     os.path.join(ROOT, "tests", "guard_test.lua"),
+    os.path.join(ROOT, "tests", "store_scan_test.lua"),
 ]
 
 

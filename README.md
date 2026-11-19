@@ -112,12 +112,16 @@ Requires [LibSets](https://www.esoui.com/downloads/info2241-LibSets.html)
 ## Tests
 
 The decision maths is deliberately free of ESO API calls, so it runs outside the
-game:
+game. The store scan runs too, against a fake store that stands in for the game
+functions it calls:
 
 ```
 py -3 -m pip install lupa
 py -3 tests/run.py
+py -3 tests/check_globals.py   # fails on any global besides MonsterCofferHelper
 ```
 
-Everything that does touch the game API — the stickerbook scan, the store scan,
-the window — is not covered and needs testing in the client.
+GitHub Actions runs both on every push and pull request.
+
+The stickerbook scan and the window are not covered and need testing in the
+client.
