@@ -179,6 +179,30 @@ do
     checkNum("no vendors counted", none.vendors, 0)
 end
 
+print("\nwhat the keys you hold buy")
+do
+    -- 12 of 12 missing at 1 vs 8 keys. Mystery's cost per new shoulder runs
+    -- 1, 1.09, 1.2, 1.33, 1.5, 1.71, 2, 2.4, 3, 4, 6, then curated's 8:
+    -- 7 shoulders come to 9.84 keys, 8 to 12.24.
+    local r = Advisor.Evaluate(MakePool({ 3, 3, 3, 3 }), 1, 8)
+    checkNum("10 keys buy 7", Advisor.ShouldersForKeys(r, 10), 7)
+    checkNum("1 key buys the first", Advisor.ShouldersForKeys(r, 1), 1)
+    checkNum("no keys buy nothing", Advisor.ShouldersForKeys(r, 0), 0)
+    checkNum("the smart-way total buys every shoulder",
+        Advisor.ShouldersForKeys(r, r.projection.optimal), 12)
+    checkNum("a key short of it does not", Advisor.ShouldersForKeys(r, r.projection.optimal - 1), 11)
+    checkNum("more keys than needed still stop at what is missing", Advisor.ShouldersForKeys(r, 500), 12)
+
+    -- Past the switch point every shoulder is a curated coffer.
+    local late = Advisor.Evaluate(MakePool({ 0, 0, 0, 1 }), 1, 8)
+    checkNum("7 keys don't buy a curated coffer", Advisor.ShouldersForKeys(late, 7), 0)
+    checkNum("8 do", Advisor.ShouldersForKeys(late, 8), 1)
+
+    local done = Advisor.Evaluate(MakePool({ 0, 0, 0, 0 }), 1, 8)
+    checkNum("a finished vendor needs nothing", Advisor.ShouldersForKeys(done, 50), 0)
+    checkNum("no result", Advisor.ShouldersForKeys(nil, 50), 0)
+end
+
 --------------------------------------------------------------------------------
 
 print(string.format("\n%d check(s), %d failure(s)\n", checks, failures))

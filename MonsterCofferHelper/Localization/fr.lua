@@ -23,6 +23,8 @@ ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[clé/clés]>> en optimisant 
 ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Tous les marchands")
 ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> <<3[clé/clés]>> pour <<2>> <<2[épaulière manquante/épaulières manquantes]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Vous possédez <<1>> <<1[clé/clés]>> des Indomptables")
+ZO_CreateStringId("SI_MCH_KEYS_BUY", "Vous possédez <<1>> <<1[clé/clés]>> des Indomptables : environ <<2>> <<2[nouvelle épaulière/nouvelles épaulières]>> ici en optimisant")
+ZO_CreateStringId("SI_MCH_KEYS_FINISH", "Vous possédez <<1>> <<1[clé/clés]>> des Indomptables : de quoi terminer ce marchand, en moyenne")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Ensembles dont il manque encore des épaulières")
 ZO_CreateStringId("SI_MCH_AND_MORE", "et <<1>> <<1[autre/autres]>>")
 ZO_CreateStringId("SI_MCH_NO_DATA", "Aucune donnée d'épaulières pour ce marchand.")

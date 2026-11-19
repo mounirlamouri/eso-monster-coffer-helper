@@ -114,6 +114,21 @@ local function AllVendorsLine(result)
     return Colored(C.head, GetString(SI_MCH_ALL_VENDORS)) .. "  " .. Format.TotalLine(sum)
 end
 
+-- "You hold 58 Undaunted Keys: about 30 new shoulders here the smart way".
+local function KeysLine(result)
+    local keys = MCH.Model.GetKeyCount()
+    local shoulders = MCH.Advisor.ShouldersForKeys(result, keys)
+    local text
+    if shoulders > 0 and shoulders >= result.missing then
+        text = zo_strformat(SI_MCH_KEYS_FINISH, keys)
+    elseif shoulders > 0 then
+        text = zo_strformat(SI_MCH_KEYS_BUY, keys, shoulders)
+    else
+        text = zo_strformat(SI_MCH_KEYS_HELD, keys)
+    end
+    return Colored(C.dim, text)
+end
+
 -- The full multi-line body shown in the panel.
 function Format.PanelBody(result)
     if not result then return GetString(SI_MCH_NO_DATA) end
@@ -165,7 +180,7 @@ function Format.PanelBody(result)
     local allLine = AllVendorsLine(result)
     if allLine then lines[#lines + 1] = allLine end
 
-    lines[#lines + 1] = Colored(C.dim, zo_strformat(SI_MCH_KEYS_HELD, MCH.Model.GetKeyCount()))
+    lines[#lines + 1] = KeysLine(result)
     lines[#lines + 1] = Colored(C.dim,
         GetString(result.pricesLearned and SI_MCH_PRICES_LEARNED or SI_MCH_PRICES_ASSUMED))
 

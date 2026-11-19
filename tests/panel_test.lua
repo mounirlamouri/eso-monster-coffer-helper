@@ -158,6 +158,30 @@ local ok, err = pcall(function()
         check("/coffer prints no total once everything is collected", #printed == 0, tostring(#printed))
     end
 
+    print("\nwhat the keys you hold buy")
+    do
+        Shelves({ Pool({ 3, 3, 3, 3 }) }, 10)
+        Has("some new shoulders", Format.PanelBody(Advisor.ForVendor(1)),
+            "You hold 10 Undaunted Keys: about 7 new shoulders here the smart way")
+
+        Shelves({ Pool({ 3, 3, 3, 3 }) }, 1)
+        Has("one new shoulder", Format.PanelBody(Advisor.ForVendor(1)),
+            "You hold 1 Undaunted Key: about 1 new shoulder here the smart way")
+
+        Shelves({ Pool({ 3, 3, 3, 3 }) }, 40)
+        Has("enough to finish", Format.PanelBody(Advisor.ForVendor(1)),
+            "You hold 40 Undaunted Keys: enough to finish this vendor, on average")
+
+        Shelves({ Pool({ 0, 0, 0, 1 }) }, 7)
+        local body = Format.PanelBody(Advisor.ForVendor(1))
+        Has("too few for a curated coffer just says what you hold", body, "You hold 7 Undaunted Keys")
+        Lacks("and claims nothing", body, "about")
+
+        Shelves({ Pool({ 0, 0, 0, 0 }) }, 30)
+        Has("a finished vendor just says what you hold", Format.PanelBody(Advisor.ForVendor(1)),
+            "You hold 30 Undaunted Keys")
+    end
+
     print("\nthe purchase confirmation's text")
     do
         local Guard = MCH.Guard

@@ -58,6 +58,12 @@ The second line adds up the smart-way estimate for all three quartermasters,
 so it answers "how many keys to get everything". It only appears while some of
 the missing shoulders are at another vendor.
 
+The same sums turn the keys you hold into shoulders:
+
+```
+You hold 58 Undaunted Keys: about 30 new shoulders here the smart way
+```
+
 ## Where it shows up
 
 - **A panel** at the vendor, with the verdict and every number behind it.

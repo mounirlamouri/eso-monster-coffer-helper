@@ -23,6 +23,8 @@ ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> Schlüssel bei bester Wahl (nur 
 ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Alle Händler")
 ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> Schlüssel für <<2>> <<2[fehlende Schulter/fehlende Schultern]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Ihr habt <<1>> Schlüssel der Unerschrockenen")
+ZO_CreateStringId("SI_MCH_KEYS_BUY", "Ihr habt <<1>> Schlüssel der Unerschrockenen: etwa <<2>> <<2[neue Schulter/neue Schultern]>> hier bei bester Wahl")
+ZO_CreateStringId("SI_MCH_KEYS_FINISH", "Ihr habt <<1>> Schlüssel der Unerschrockenen: im Schnitt genug, um diesen Händler abzuschließen")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Noch fehlende Schultern aus")
 ZO_CreateStringId("SI_MCH_AND_MORE", "und <<1>> weitere")
 ZO_CreateStringId("SI_MCH_NO_DATA", "Keine Schulterdaten für diesen Händler.")

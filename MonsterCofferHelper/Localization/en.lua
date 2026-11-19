@@ -23,6 +23,8 @@ ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[key/keys]>> the smart way (a
 ZO_CreateStringId("SI_MCH_ALL_VENDORS", "All vendors")
 ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> <<3[key/keys]>> for the <<2>> missing <<2[shoulder/shoulders]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "You hold <<1>> Undaunted <<1[Key/Keys]>>")
+ZO_CreateStringId("SI_MCH_KEYS_BUY", "You hold <<1>> Undaunted <<1[Key/Keys]>>: about <<2>> new <<2[shoulder/shoulders]>> here the smart way")
+ZO_CreateStringId("SI_MCH_KEYS_FINISH", "You hold <<1>> Undaunted <<1[Key/Keys]>>: enough to finish this vendor, on average")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Still missing shoulders from")
 ZO_CreateStringId("SI_MCH_AND_MORE", "and <<1>> more")
 ZO_CreateStringId("SI_MCH_NO_DATA", "No shoulder data for this vendor.")

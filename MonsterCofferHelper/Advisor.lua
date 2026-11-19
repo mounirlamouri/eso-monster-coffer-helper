@@ -108,6 +108,27 @@ function Advisor.Evaluate(pool, mysteryCost, curatedCost)
     return r
 end
 
+-- How many new shoulders `keys` buy at this vendor, on average, spent the smart
+-- way. Each new shoulder costs whichever is cheaper at that point: a curated
+-- coffer, or the cost of finding one with Mystery Coffers, which grows as
+-- fewer are missing. The same sums as the projection, so having
+-- projection.optimal keys finishes the vendor.
+-- Pure, so it can be tested outside the game.
+function Advisor.ShouldersForKeys(result, keys)
+    if not result or not keys or result.missing == 0 then return 0 end
+
+    local N = result.total
+    local spent, bought = 0, 0
+    for m = result.missing, 1, -1 do
+        local cost = math.min(result.mysteryCost * N / m, result.curatedCost)
+        -- A little slack, so keys that match a total exactly are enough.
+        if spent + cost > keys + 1e-9 then break end
+        spent  = spent + cost
+        bought = bought + 1
+    end
+    return bought
+end
+
 -- A curated coffer covers several sets. Adds them up from the pool the advisor
 -- already built, so the tooltip and the purchase check reuse the numbers the
 -- panel is showing rather than rescanning. Returns nil when none of the
