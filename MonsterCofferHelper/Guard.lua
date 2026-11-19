@@ -37,7 +37,9 @@ end
 -- Why buying `quantity` of store entry `entryIndex` is not the best buy, or nil
 -- when it is fine or is not a coffer this addon knows about. `scan` is
 -- Store.current and `result` the advisor's result for that vendor. A bulk
--- reason comes back with the number to stop at as a second value.
+-- reason comes back with the number to stop at as a second value. So does a
+-- curated coffer that is the worse buy and is bought past what it has missing,
+-- so the dialog can name the duplicates too.
 -- Pure, so it can be tested outside the game.
 function Guard.Check(scan, result, entryIndex, quantity)
     if not scan or not result then return nil end
@@ -58,7 +60,10 @@ function Guard.Check(scan, result, entryIndex, quantity)
     -- verdict says, so that is checked first.
     local missing = MCH.Advisor.CofferCounts(result.pool, setIds)
     if missing == 0 then return Guard.REASON_DUPLICATE end
-    if result.verdict == MCH.VERDICT_MYSTERY then return Guard.REASON_CURATED_WORSE end
+    if result.verdict == MCH.VERDICT_MYSTERY then
+        if quantity > missing then return Guard.REASON_CURATED_WORSE, missing end
+        return Guard.REASON_CURATED_WORSE
+    end
     if quantity > missing then return Guard.REASON_BULK_CURATED, missing end
     return nil
 end
@@ -70,8 +75,12 @@ function Guard.Message(reason, result, stop, quantity)
         return zo_strformat(SI_MCH_GUARD_MYSTERY_WORSE,
             Num(result.curatedPerNew), Num(result.mysteryPerNew), Count(result.curatedPerNew))
     elseif reason == Guard.REASON_CURATED_WORSE then
-        return zo_strformat(SI_MCH_GUARD_CURATED_WORSE,
+        local text = zo_strformat(SI_MCH_GUARD_CURATED_WORSE,
             Num(result.mysteryPerNew), Num(result.curatedPerNew), Count(result.mysteryPerNew))
+        if stop and quantity and quantity > stop then
+            text = text .. " " .. zo_strformat(SI_MCH_GUARD_BULK_CURATED, quantity, stop, quantity - stop)
+        end
+        return text
     elseif reason == Guard.REASON_BULK_MYSTERY then
         return zo_strformat(SI_MCH_GUARD_BULK_MYSTERY, quantity, stop)
     elseif reason == Guard.REASON_BULK_CURATED then

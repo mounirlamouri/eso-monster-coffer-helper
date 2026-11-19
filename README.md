@@ -76,6 +76,7 @@ You hold 58 Undaunted Keys: about 30 new shoulders here the smart way
   at once is checked too: more Mystery Coffers than it takes, on average, to
   reach the point where curated becomes cheaper (the dialog says how many to
   stop at), or more of a curated coffer than it has shoulders you're missing.
+  A costlier curated coffer bought past what it has missing gets both warnings.
   It can be turned off in the settings.
 - **`/coffer`** anywhere in the world for all three vendors and the total, `/coffer 2` or
   `/coffer maj` for one, `/coffer settings` for the options panel.

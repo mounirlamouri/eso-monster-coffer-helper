@@ -128,5 +128,17 @@ do
         Guard.Check(SCAN, result, 1, 5), Guard.REASON_MYSTERY_WORSE)
 end
 
+print("\na curated coffer that is the worse buy, bought past what it has missing")
+do
+    -- 10 of 12 missing, so mystery is the best buy. Entry 3 holds sets 103 and
+    -- 104, with 4 shoulders missing between them.
+    local result = Result({ 3, 3, 3, 1 })
+    local reason, stop = Guard.Check(SCAN, result, 3, 5)
+    check("the worse buy is still the reason", reason, Guard.REASON_CURATED_WORSE)
+    check("with what it has missing, for the duplicates", stop, 4)
+    local _, none = Guard.Check(SCAN, result, 3, 4)
+    check("no duplicates, nothing more to say", none, nil)
+end
+
 print(string.format("\n%d check(s), %d failure(s)\n", checks, failures))
 if failures > 0 then error("guard tests failed", 0) end

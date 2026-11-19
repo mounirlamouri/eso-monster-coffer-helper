@@ -197,6 +197,15 @@ local ok, err = pcall(function()
             "only 4 shoulders you're missing, so buying 10 would give at least 6 duplicates.")
         Has("mystery is the worse buy", Guard.Message(Guard.REASON_MYSTERY_WORSE, result),
             "Curated coffers are cheaper here right now: 8 keys per new shoulder")
+
+        local alone = Guard.Message(Guard.REASON_CURATED_WORSE, result)
+        Has("curated is the worse buy", alone, "Mystery Coffers are cheaper here right now:")
+        Lacks("one coffer has no duplicates to mention", alone, "duplicate")
+        Lacks("nor does a quantity within what is missing",
+            Guard.Message(Guard.REASON_CURATED_WORSE, result, nil, 2), "duplicate")
+        local both = Guard.Message(Guard.REASON_CURATED_WORSE, result, 2, 3)
+        Has("the worse buy, bought past what is missing, names both", both,
+            "against 8 for this curated coffer. This coffer has only 2 shoulders you're missing, so buying 3 would give at least 1 duplicate.")
     end
 end)
 
