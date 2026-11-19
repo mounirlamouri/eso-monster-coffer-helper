@@ -26,5 +26,8 @@ jobs:
       - name: No globals besides MonsterCofferHelper
         run: python tests/check_globals.py
 
+      - name: Translations match English
+        run: python tests/check_localization.py
+
       - name: Release zip builds
         run: python package.py --dry-run

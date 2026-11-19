@@ -118,10 +118,11 @@ functions it calls:
 ```
 py -3 -m pip install lupa
 py -3 tests/run.py
-py -3 tests/check_globals.py   # fails on any global besides MonsterCofferHelper
+py -3 tests/check_globals.py        # fails on any global besides MonsterCofferHelper
+py -3 tests/check_localization.py   # fails if a translation misses a string or a <<n>>
 ```
 
-GitHub Actions runs both on every push and pull request.
+GitHub Actions runs all three on every push and pull request.
 
 The stickerbook scan and the window are not covered and need testing in the
 client.
