@@ -20,6 +20,8 @@ ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Zufallstruhen bleiben günstiger, bis n
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Der Wendepunkt ist erreicht: Ab jetzt sind gezielte Truhen günstiger.")
 ZO_CreateStringId("SI_MCH_FINISH", "Diesen Händler abschließen")
 ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> Schlüssel bei bester Wahl (nur Zufall <<2>> / nur gezielt <<3>>)")
+ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Alle Händler")
+ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> Schlüssel für <<2>> <<2[fehlende Schulter/fehlende Schultern]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Ihr habt <<1>> Schlüssel der Unerschrockenen")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Noch fehlende Schultern aus")
 ZO_CreateStringId("SI_MCH_AND_MORE", "und <<1>> weitere")

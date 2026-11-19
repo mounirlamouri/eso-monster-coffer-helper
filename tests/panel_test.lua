@@ -1,0 +1,169 @@
+-- Renders the panel and chat text with the English strings, so a line that
+-- breaks, or a count that reads "1 keys", shows up outside the game.
+--
+-- The game's formatting is stood in for by a small zo_strformat that handles
+-- what these strings use: <<n>> and the plural choice <<n[one/many]>>. The
+-- vendors' pools, prices and the key count are stood in for too.
+--
+-- Run with: py -3 tests/run.py
+
+local failures, checks = 0, 0
+
+local function check(label, condition, detail)
+    checks = checks + 1
+    if condition then
+        print(string.format("  ok    %s", label))
+    else
+        failures = failures + 1
+        print(string.format("  FAIL  %s%s", label, detail and ("  -> " .. detail) or ""))
+    end
+end
+
+-- Colour codes off, so the checks read the text a player reads.
+local function Plain(text)
+    return (text:gsub("|c%x%x%x%x%x%x", ""):gsub("|r", ""))
+end
+
+local function Has(label, text, wanted)
+    check(label, Plain(text):find(wanted, 1, true) ~= nil,
+        string.format("%q not in:\n%s", wanted, Plain(text)))
+end
+
+local function Lacks(label, text, unwanted)
+    check(label, Plain(text):find(unwanted, 1, true) == nil,
+        string.format("%q found in:\n%s", unwanted, Plain(text)))
+end
+
+--------------------------------------------------------------------------------
+-- The stand-in game
+--------------------------------------------------------------------------------
+
+local MCH = MonsterCofferHelper
+local strings = {}
+local printed = {}
+
+local FAKE = {
+    ZO_CreateStringId = function(name, text)
+        _G[name] = name
+        strings[name] = text
+    end,
+    GetString = function(id) return strings[id] end,
+    zo_strformat = function(format, ...)
+        local args = { ... }
+        local text = strings[format] or format
+        text = text:gsub("<<(%d+)%[([^%]]*)%]>>", function(index, choice)
+            local n = tonumber(args[tonumber(index)])
+            local forms = {}
+            for form in (choice .. "/"):gmatch("([^/]*)/") do forms[#forms + 1] = form end
+            local form
+            if #forms == 3 then
+                form = (n == 0 and forms[1]) or (n == 1 and forms[2]) or forms[3]
+            else
+                form = (n == 1) and forms[1] or forms[2]
+            end
+            return (form:gsub("%$d", tostring(n)))
+        end)
+        return (text:gsub("<<(%d+)>>", function(index) return tostring(args[tonumber(index)]) end))
+    end,
+    d = function(text) printed[#printed + 1] = text end,
+}
+
+local saved = {}
+for name, value in pairs(FAKE) do
+    saved[name] = rawget(_G, name)
+    _G[name] = value
+end
+
+local savedModel = {
+    GetPool = MCH.Model.GetPool, GetPrices = MCH.Model.GetPrices,
+    GetKeyCount = MCH.Model.GetKeyCount, GetVendorName = MCH.Model.GetVendorName,
+}
+local savedDb = MCH.db
+
+local englishFile = ADDON_ROOT .. "/Localization/en.lua"
+local localization = assert(loadfile(englishFile))
+localization()
+
+-- A pool shaped like Model.BuildPool's: `missingPerSet` shoulders missing per
+-- set, three in each.
+local function Pool(missingPerSet)
+    local pool = { sets = {}, setCount = 0, total = 0, owned = 0, missing = 0, incompleteSets = 0 }
+    for i, missing in ipairs(missingPerSet) do
+        pool.sets[i] = { setId = i, name = "Set " .. i, total = 3, owned = 3 - missing, missing = missing }
+        pool.setCount = pool.setCount + 1
+        pool.total = pool.total + 3
+        pool.owned = pool.owned + 3 - missing
+        if missing > 0 then pool.incompleteSets = pool.incompleteSets + 1 end
+    end
+    pool.missing = pool.total - pool.owned
+    return pool
+end
+
+local pools, keys = {}, 0
+
+MCH.db = { maxSetsListed = 6 }
+MCH.Model.GetPool = function(vendorId) return pools[vendorId] end
+MCH.Model.GetPrices = function() return 1, 8, true end
+MCH.Model.GetKeyCount = function() return keys end
+MCH.Model.GetVendorName = function(vendorId) return "Vendor " .. vendorId end
+
+local function Shelves(byVendor, heldKeys)
+    pools, keys = byVendor, heldKeys or 0
+    MCH.Advisor.Invalidate()
+end
+
+local Format = MCH.Format
+local Advisor = MCH.Advisor
+
+local ok, err = pcall(function()
+
+    print("\nthe panel")
+    do
+        Shelves({ Pool({ 3, 3, 3, 3 }), Pool({ 0, 0, 0, 1 }), Pool({ 0, 0, 0, 0 }) }, 1)
+        local body = Format.PanelBody(Advisor.ForVendor(1))
+        Has("names the vendor's shoulders", body, "0 / 12 shoulders across 4 sets (12 missing)")
+        Has("a mystery coffer at 1 key, 1 key per new shoulder", body, "1 key, 100.0% new -> 1 key per new shoulder")
+        Has("curated", body, "8 keys, 100.0% new -> 8 keys per new shoulder")
+        Has("one key held", body, "You hold 1 Undaunted Key")
+
+        local late = Format.PanelBody(Advisor.ForVendor(2))
+        Has("a vendor with one shoulder missing", late, "11 / 12 shoulders across 4 sets (1 missing)")
+    end
+
+    print("\nthe total across every vendor")
+    do
+        Shelves({ Pool({ 3, 3, 3, 3 }), Pool({ 0, 0, 0, 1 }), Pool({ 0, 0, 0, 0 }) })
+        local sum = Advisor.ForAllVendors()
+        local keysText = Format.Num(sum.optimal)
+        Has("shows on a vendor with shoulders left elsewhere",
+            Format.PanelBody(Advisor.ForVendor(1)), "All vendors  ~" .. keysText .. " keys for the 13 missing shoulders")
+        Has("shows on a finished vendor", Format.PanelBody(Advisor.ForVendor(3)), "All vendors  ~")
+
+        Shelves({ Pool({ 3, 3, 3, 3 }), Pool({ 0, 0, 0, 0 }), Pool({ 0, 0, 0, 0 }) })
+        Lacks("is left out when every missing shoulder is at this vendor",
+            Format.PanelBody(Advisor.ForVendor(1)), "All vendors")
+
+        Shelves({ Pool({ 0, 0, 0, 0 }), Pool({ 0, 0, 0, 0 }), Pool({ 0, 0, 0, 0 }) })
+        Lacks("is left out when everything is collected", Format.PanelBody(Advisor.ForVendor(1)), "All vendors")
+
+        printed = {}
+        Shelves({ Pool({ 0, 0, 0, 0 }), Pool({ 0, 0, 0, 1 }), Pool({ 0, 0, 0, 0 }) })
+        Format.PrintTotal(Advisor.ForAllVendors())
+        check("/coffer prints one total line", #printed == 1, tostring(#printed))
+        Has("singular when one shoulder is missing", printed[1] or "", "for the 1 missing shoulder")
+
+        printed = {}
+        Shelves({ Pool({ 0, 0, 0, 0 }), Pool({ 0, 0, 0, 0 }), Pool({ 0, 0, 0, 0 }) })
+        Format.PrintTotal(Advisor.ForAllVendors())
+        check("/coffer prints no total once everything is collected", #printed == 0, tostring(#printed))
+    end
+end)
+
+for name in pairs(FAKE) do _G[name] = saved[name] end
+for name, fn in pairs(savedModel) do MCH.Model[name] = fn end
+MCH.db = savedDb
+MCH.Advisor.Invalidate()
+if not ok then error(err, 0) end
+
+print(string.format("\n%d check(s), %d failure(s)\n", checks, failures))
+if failures > 0 then error("panel tests failed", 0) end

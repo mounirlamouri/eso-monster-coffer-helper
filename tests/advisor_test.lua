@@ -157,6 +157,28 @@ do
     check("verdict is curated", r2.verdict == MCH.VERDICT_CURATED, r2.verdict)
 end
 
+print("\nthe total across every vendor")
+do
+    local early = Advisor.Evaluate(MakePool({ 3, 3, 3, 3 }), 1, 8)  -- 12 missing of 12
+    local late  = Advisor.Evaluate(MakePool({ 0, 0, 0, 1 }), 1, 8)  -- 1 missing of 12
+    local done  = Advisor.Evaluate(MakePool({ 0, 0, 0, 0 }), 1, 8)
+    local sum = Advisor.Total({ early, late, done })
+
+    checkNum("three vendors", sum.vendors, 3)
+    checkNum("shoulders add up", sum.total, 36)
+    checkNum("missing adds up", sum.missing, 13)
+    checkNum("owned adds up", sum.owned, 23)
+    checkNum("keys are the vendors' smart-way estimates added",
+        sum.optimal, early.projection.optimal + late.projection.optimal)
+    checkNum("the finished vendor costs nothing", Advisor.Total({ done }).optimal, 0)
+    checkNum("all-mystery adds up", sum.allMystery, early.projection.allMystery + late.projection.allMystery)
+    checkNum("all-curated adds up", sum.allCurated, 13 * 8)
+
+    local none = Advisor.Total({})
+    checkNum("no vendors, no keys", none.optimal, 0)
+    checkNum("no vendors counted", none.vendors, 0)
+end
+
 --------------------------------------------------------------------------------
 
 print(string.format("\n%d check(s), %d failure(s)\n", checks, failures))

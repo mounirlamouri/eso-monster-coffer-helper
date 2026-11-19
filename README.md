@@ -51,7 +51,12 @@ reported:
 
 ```
 Finish this vendor  ~55 keys the smart way (all mystery 98 / all curated 64)
+All vendors  ~140 keys for the 52 missing shoulders
 ```
+
+The second line adds up the smart-way estimate for all three quartermasters,
+so it answers "how many keys to get everything". It only appears while some of
+the missing shoulders are at another vendor.
 
 ## Where it shows up
 
@@ -63,7 +68,7 @@ Finish this vendor  ~55 keys the smart way (all mystery 98 / all curated 64)
   costlier coffer, or one that can only give a shoulder you already own, asks
   first, with the numbers behind it and a "Buy anyway" button. It can be turned
   off in the settings.
-- **`/coffer`** anywhere in the world for all three vendors, `/coffer 2` or
+- **`/coffer`** anywhere in the world for all three vendors and the total, `/coffer 2` or
   `/coffer maj` for one, `/coffer settings` for the options panel.
 
 ![The chat line printed as the store opens, giving the verdict and both

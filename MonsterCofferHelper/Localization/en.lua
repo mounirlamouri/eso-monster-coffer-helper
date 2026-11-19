@@ -20,6 +20,8 @@ ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Mystery stays cheaper until <<1>> <<1[s
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "You are past the break-even point; curated is cheaper from here on.")
 ZO_CreateStringId("SI_MCH_FINISH", "Finish this vendor")
 ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[key/keys]>> the smart way (all mystery <<2>> / all curated <<3>>)")
+ZO_CreateStringId("SI_MCH_ALL_VENDORS", "All vendors")
+ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> <<3[key/keys]>> for the <<2>> missing <<2[shoulder/shoulders]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "You hold <<1>> Undaunted <<1[Key/Keys]>>")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Still missing shoulders from")
 ZO_CreateStringId("SI_MCH_AND_MORE", "and <<1>> more")

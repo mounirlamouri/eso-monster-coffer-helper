@@ -20,6 +20,8 @@ ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Le coffre mystère reste plus rentable 
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Le seuil de rentabilité est franchi : les coffres ciblés sont désormais moins chers.")
 ZO_CreateStringId("SI_MCH_FINISH", "Terminer ce marchand")
 ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[clé/clés]>> en optimisant (tout en mystère <<2>> / tout en ciblé <<3>>)")
+ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Tous les marchands")
+ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> <<3[clé/clés]>> pour <<2>> <<2[épaulière manquante/épaulières manquantes]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Vous possédez <<1>> <<1[clé/clés]>> des Indomptables")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Ensembles dont il manque encore des épaulières")
 ZO_CreateStringId("SI_MCH_AND_MORE", "et <<1>> <<1[autre/autres]>>")

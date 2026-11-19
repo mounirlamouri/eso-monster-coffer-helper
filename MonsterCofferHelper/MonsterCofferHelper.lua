@@ -21,7 +21,7 @@ local function ResolveVendor(argument)
 end
 
 local function PrintUsage()
-    d("|c9FD3FF/coffer|r - verdict for all three quartermasters")
+    d("|c9FD3FF/coffer|r - verdict for all three quartermasters, and the total")
     d("|c9FD3FF/coffer <1-3 or name>|r - full breakdown for one of them")
     d("|c9FD3FF/coffer panel|r - toggle the window")
     d("|c9FD3FF/coffer settings|r - open the settings panel")
@@ -40,6 +40,7 @@ local function HandleSlash(argumentString)
                 MCH.Format.PrintToChat(result)
             end
         end
+        MCH.Format.PrintTotal(MCH.Advisor.ForAllVendors())
         return
     end
 

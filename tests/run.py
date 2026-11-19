@@ -35,11 +35,14 @@ SOURCES = [
     os.path.join(ROOT, "tests", "guard_test.lua"),
     os.path.join(ROOT, "tests", "store_scan_test.lua"),
     os.path.join(ROOT, "tests", "format_test.lua"),
+    os.path.join(ROOT, "tests", "panel_test.lua"),
 ]
 
 
 def main():
     lua = LuaRuntime()
+    # Where panel_test.lua finds the English strings.
+    lua.globals().ADDON_ROOT = ADDON.replace(os.sep, "/")
     run = lua.eval("""
         function(src, name)
             local fn, err = load(src, name)

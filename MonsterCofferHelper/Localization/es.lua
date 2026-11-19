@@ -20,6 +20,8 @@ ZO_CreateStringId("SI_MCH_SWITCH_HINT", "El cofre misterioso sigue siendo más b
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Ya has pasado el punto de equilibrio: a partir de ahora el cofre específico es más barato.")
 ZO_CreateStringId("SI_MCH_FINISH", "Completar este vendedor")
 ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[llave/llaves]>> eligiendo bien (todo misterioso <<2>> / todo específico <<3>>)")
+ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Todos los vendedores")
+ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> <<3[llave/llaves]>> por <<2>> <<2[hombrera que falta/hombreras que faltan]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Tienes <<1>> <<1[llave/llaves]>> de los Intrépidos")
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Conjuntos a los que aún les faltan hombreras")
 ZO_CreateStringId("SI_MCH_AND_MORE", "y <<1>> más")

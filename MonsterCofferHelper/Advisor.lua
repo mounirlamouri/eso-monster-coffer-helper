@@ -123,6 +123,27 @@ function Advisor.CofferCounts(pool, setIds)
     return missing, total
 end
 
+-- What finishing every quartermaster comes to: the vendors' results added up.
+-- A vendor with nothing missing adds its shoulders but no keys. Vendors with no
+-- data at all have no result and are left out.
+-- Pure, so it can be tested outside the game.
+function Advisor.Total(results)
+    local sum = { vendors = 0, total = 0, owned = 0, missing = 0, optimal = 0, allMystery = 0, allCurated = 0 }
+    for _, result in ipairs(results) do
+        sum.vendors = sum.vendors + 1
+        sum.total   = sum.total + result.total
+        sum.owned   = sum.owned + result.owned
+        sum.missing = sum.missing + result.missing
+        local projection = result.projection
+        if projection then
+            sum.optimal    = sum.optimal + projection.optimal
+            sum.allMystery = sum.allMystery + projection.allMystery
+            sum.allCurated = sum.allCurated + projection.allCurated
+        end
+    end
+    return sum
+end
+
 -- Convenience wrapper used by everything that just wants "what about vendor N".
 --
 -- Results are cached because the tooltip hook calls this on every mouse-over.
@@ -142,6 +163,16 @@ function Advisor.ForVendor(vendorId)
         resultCache[vendorId] = result
     end
     return result
+end
+
+-- The total across every quartermaster, from the same cached results.
+function Advisor.ForAllVendors()
+    local results = {}
+    for _, vendorId in ipairs(MCH.VENDOR_IDS) do
+        local result = Advisor.ForVendor(vendorId)
+        if result then results[#results + 1] = result end
+    end
+    return Advisor.Total(results)
 end
 
 function Advisor.Invalidate(vendorId)

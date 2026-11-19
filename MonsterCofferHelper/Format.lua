@@ -100,6 +100,20 @@ local function SwitchLine(result)
         zo_strformat(SI_MCH_SWITCH_HINT, projection.switchAt, projection.switchToGo))
 end
 
+-- "~95 keys for the 31 missing shoulders", for every quartermaster together.
+function Format.TotalLine(sum)
+    return zo_strformat(SI_MCH_ALL_LINE,
+        Colored(C.value, Format.Num(sum.optimal)), sum.missing, Format.Count(sum.optimal))
+end
+
+-- The all-vendor line for the panel, or nil when it would add nothing: every
+-- shoulder is collected, or every missing one is at the vendor on screen.
+local function AllVendorsLine(result)
+    local sum = MCH.Advisor.ForAllVendors()
+    if sum.missing == 0 or sum.missing == result.missing then return nil end
+    return Colored(C.head, GetString(SI_MCH_ALL_VENDORS)) .. "  " .. Format.TotalLine(sum)
+end
+
 -- The full multi-line body shown in the panel.
 function Format.PanelBody(result)
     if not result then return GetString(SI_MCH_NO_DATA) end
@@ -115,6 +129,8 @@ function Format.PanelBody(result)
     if result.verdict == MCH.VERDICT_DONE then
         lines[#lines + 1] = ""
         lines[#lines + 1] = Colored(C.good, GetString(SI_MCH_VERDICT_DONE))
+        local allLine = AllVendorsLine(result)
+        if allLine then lines[#lines + 1] = allLine end
         lines[#lines + 1] = Colored(C.dim, zo_strformat(SI_MCH_KEYS_HELD, MCH.Model.GetKeyCount()))
         return table.concat(lines, "\n")
     end
@@ -145,6 +161,9 @@ function Format.PanelBody(result)
                 Format.Num(projection.allCurated),
                 Format.Count(projection.optimal))
     end
+
+    local allLine = AllVendorsLine(result)
+    if allLine then lines[#lines + 1] = allLine end
 
     lines[#lines + 1] = Colored(C.dim, zo_strformat(SI_MCH_KEYS_HELD, MCH.Model.GetKeyCount()))
     lines[#lines + 1] = Colored(C.dim,
@@ -190,6 +209,12 @@ function Format.PrintToChat(result)
         return
     end
     d(Prefix() .. Format.ChatSummary(result))
+end
+
+-- The last line of /coffer: what is left across every quartermaster.
+function Format.PrintTotal(sum)
+    if sum.vendors == 0 or sum.missing == 0 then return end
+    d(Prefix() .. Colored(C.value, GetString(SI_MCH_ALL_VENDORS)) .. ": " .. Format.TotalLine(sum))
 end
 
 -- The slash command's full write-up for one vendor.
