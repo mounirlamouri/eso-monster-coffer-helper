@@ -99,11 +99,11 @@ local function Pool(missingPerSet)
     return pool
 end
 
-local pools, keys = {}, 0
+local pools, keys, learned = {}, 0, true
 
 MCH.db = { maxSetsListed = 6 }
 MCH.Model.GetPool = function(vendorId) return pools[vendorId] end
-MCH.Model.GetPrices = function() return 1, 8, true end
+MCH.Model.GetPrices = function() return 1, 8, learned end
 MCH.Model.GetKeyCount = function() return keys end
 MCH.Model.GetVendorName = function(vendorId) return "Vendor " .. vendorId end
 
@@ -128,6 +128,13 @@ local ok, err = pcall(function()
 
         local late = Format.PanelBody(Advisor.ForVendor(2))
         Has("a vendor with one shoulder missing", late, "11 / 12 shoulders across 4 sets (1 missing)")
+
+        Lacks("prices read from the store go unmentioned", body, "prices")
+        learned = false
+        Shelves({ Pool({ 3, 3, 3, 3 }) })
+        Has("assumed prices are flagged", Format.PanelBody(Advisor.ForVendor(1)),
+            "assumed prices - visit the vendor to confirm")
+        learned = true
     end
 
     print("\nthe total across every vendor")

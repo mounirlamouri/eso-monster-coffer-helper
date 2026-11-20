@@ -28,7 +28,6 @@ ZO_CreateStringId("SI_MCH_KEYS_FINISH", "Vous possédez <<1>> <<1[clé/clés]>> 
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Ensembles dont il manque encore des épaulières")
 ZO_CreateStringId("SI_MCH_AND_MORE", "et <<1>> <<1[autre/autres]>>")
 ZO_CreateStringId("SI_MCH_NO_DATA", "Aucune donnée d'épaulières pour ce marchand.")
-ZO_CreateStringId("SI_MCH_PRICES_LEARNED", "prix relevés chez ce marchand")
 ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "prix supposés - parlez au marchand pour les confirmer")
 
 -- Chat

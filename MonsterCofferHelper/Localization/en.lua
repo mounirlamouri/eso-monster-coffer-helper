@@ -28,7 +28,6 @@ ZO_CreateStringId("SI_MCH_KEYS_FINISH", "You hold <<1>> Undaunted <<1[Key/Keys]>
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Still missing shoulders from")
 ZO_CreateStringId("SI_MCH_AND_MORE", "and <<1>> more")
 ZO_CreateStringId("SI_MCH_NO_DATA", "No shoulder data for this vendor.")
-ZO_CreateStringId("SI_MCH_PRICES_LEARNED", "prices read from this vendor")
 ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "assumed prices - visit the vendor to confirm")
 
 -- Chat

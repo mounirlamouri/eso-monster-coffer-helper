@@ -28,7 +28,6 @@ ZO_CreateStringId("SI_MCH_KEYS_FINISH", "Ihr habt <<1>> Schlüssel der Unerschro
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Noch fehlende Schultern aus")
 ZO_CreateStringId("SI_MCH_AND_MORE", "und <<1>> weitere")
 ZO_CreateStringId("SI_MCH_NO_DATA", "Keine Schulterdaten für diesen Händler.")
-ZO_CreateStringId("SI_MCH_PRICES_LEARNED", "Preise von diesem Händler gelesen")
 ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "angenommene Preise - besucht den Händler, um sie zu bestätigen")
 
 -- Chat

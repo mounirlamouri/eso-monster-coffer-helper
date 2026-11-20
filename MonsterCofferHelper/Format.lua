@@ -179,8 +179,11 @@ function Format.PanelBody(result)
     end
 
     lines[#lines + 1] = KeysLine(result)
-    lines[#lines + 1] = Colored(C.dim,
-        GetString(result.pricesLearned and SI_MCH_PRICES_LEARNED or SI_MCH_PRICES_ASSUMED))
+    -- Only worth a line when the prices are the fallback ones: read from the
+    -- store, they are just the prices on screen.
+    if not result.pricesLearned then
+        lines[#lines + 1] = Colored(C.dim, GetString(SI_MCH_PRICES_ASSUMED))
+    end
 
     local setsLine = IncompleteSetsLine(result)
     if setsLine then

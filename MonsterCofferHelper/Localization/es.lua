@@ -28,7 +28,6 @@ ZO_CreateStringId("SI_MCH_KEYS_FINISH", "Tienes <<1>> <<1[llave/llaves]>> de los
 ZO_CreateStringId("SI_MCH_INCOMPLETE_SETS", "Conjuntos a los que aún les faltan hombreras")
 ZO_CreateStringId("SI_MCH_AND_MORE", "y <<1>> más")
 ZO_CreateStringId("SI_MCH_NO_DATA", "No hay datos de hombreras para este vendedor.")
-ZO_CreateStringId("SI_MCH_PRICES_LEARNED", "precios leídos de este vendedor")
 ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "precios supuestos - visita al vendedor para confirmarlos")
 
 -- Chat
