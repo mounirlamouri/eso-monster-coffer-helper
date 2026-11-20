@@ -51,10 +51,11 @@ reported:
 
 ```
 Finish this vendor  ~55 keys the smart way (all mystery 98 / all curated 64)
+
 All vendors  ~140 keys for the 52 missing shoulders
 ```
 
-The second line adds up the smart-way estimate for all three quartermasters,
+The All vendors line, at the bottom of the panel, adds up the smart-way estimate for all three quartermasters,
 so it answers "how many keys to get everything". It only appears while some of
 the missing shoulders are at another vendor.
 

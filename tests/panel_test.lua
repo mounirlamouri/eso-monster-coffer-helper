@@ -139,6 +139,14 @@ local ok, err = pcall(function()
             Format.PanelBody(Advisor.ForVendor(1)), "All vendors  ~" .. keysText .. " keys for the 13 missing shoulders")
         Has("shows on a finished vendor", Format.PanelBody(Advisor.ForVendor(3)), "All vendors  ~")
 
+        local function SetApartAtTheEnd(body)
+            return Plain(body):find("\n\nAll vendors  ~[^\n]*$") ~= nil
+        end
+        check("comes last, after a blank line", SetApartAtTheEnd(Format.PanelBody(Advisor.ForVendor(1))),
+            Plain(Format.PanelBody(Advisor.ForVendor(1))))
+        check("on a finished vendor too", SetApartAtTheEnd(Format.PanelBody(Advisor.ForVendor(3))),
+            Plain(Format.PanelBody(Advisor.ForVendor(3))))
+
         Shelves({ Pool({ 3, 3, 3, 3 }), Pool({ 0, 0, 0, 0 }), Pool({ 0, 0, 0, 0 }) })
         Lacks("is left out when every missing shoulder is at this vendor",
             Format.PanelBody(Advisor.ForVendor(1)), "All vendors")

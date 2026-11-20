@@ -106,12 +106,14 @@ function Format.TotalLine(sum)
         Colored(C.value, Format.Num(sum.optimal)), sum.missing, Format.Count(sum.optimal))
 end
 
--- The all-vendor line for the panel, or nil when it would add nothing: every
+-- Adds the all-vendor line at the end of the panel, set apart from this
+-- vendor's lines by a blank one. Left out when it would add nothing: every
 -- shoulder is collected, or every missing one is at the vendor on screen.
-local function AllVendorsLine(result)
+local function AddAllVendorsLine(lines, result)
     local sum = MCH.Advisor.ForAllVendors()
-    if sum.missing == 0 or sum.missing == result.missing then return nil end
-    return Colored(C.head, GetString(SI_MCH_ALL_VENDORS)) .. "  " .. Format.TotalLine(sum)
+    if sum.missing == 0 or sum.missing == result.missing then return end
+    lines[#lines + 1] = ""
+    lines[#lines + 1] = Colored(C.head, GetString(SI_MCH_ALL_VENDORS)) .. "  " .. Format.TotalLine(sum)
 end
 
 -- "You hold 58 Undaunted Keys: about 30 new shoulders here the smart way".
@@ -144,9 +146,8 @@ function Format.PanelBody(result)
     if result.verdict == MCH.VERDICT_DONE then
         lines[#lines + 1] = ""
         lines[#lines + 1] = Colored(C.good, GetString(SI_MCH_VERDICT_DONE))
-        local allLine = AllVendorsLine(result)
-        if allLine then lines[#lines + 1] = allLine end
         lines[#lines + 1] = Colored(C.dim, zo_strformat(SI_MCH_KEYS_HELD, MCH.Model.GetKeyCount()))
+        AddAllVendorsLine(lines, result)
         return table.concat(lines, "\n")
     end
 
@@ -177,9 +178,6 @@ function Format.PanelBody(result)
                 Format.Count(projection.optimal))
     end
 
-    local allLine = AllVendorsLine(result)
-    if allLine then lines[#lines + 1] = allLine end
-
     lines[#lines + 1] = KeysLine(result)
     lines[#lines + 1] = Colored(C.dim,
         GetString(result.pricesLearned and SI_MCH_PRICES_LEARNED or SI_MCH_PRICES_ASSUMED))
@@ -190,6 +188,7 @@ function Format.PanelBody(result)
         lines[#lines + 1] = setsLine
     end
 
+    AddAllVendorsLine(lines, result)
     return table.concat(lines, "\n")
 end
 
