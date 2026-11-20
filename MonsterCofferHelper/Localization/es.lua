@@ -6,7 +6,7 @@ ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ",")
 
 -- Verdicts
 ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Compra cofres MISTERIOSOS")
-ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Compra cofres ESPECÍFICOS")
+ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Compra cofres SELECCIONADOS")
 ZO_CreateStringId("SI_MCH_VERDICT_EITHER", "Los dos cuestan lo mismo")
 ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Colección completa - no compres nada")
 
@@ -14,12 +14,12 @@ ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Colección completa - no compres nada"
 ZO_CreateStringId("SI_MCH_COLLECTED", "Colección")
 ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> <<2[hombrera/hombreras]>> de <<3>> <<3[conjunto/conjuntos]>> (sin conseguir: <<4>>)")
 ZO_CreateStringId("SI_MCH_MYSTERY", "Misterioso")
-ZO_CreateStringId("SI_MCH_CURATED", "Específico")
+ZO_CreateStringId("SI_MCH_CURATED", "Seleccionado")
 ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> <<1[llave/llaves]>>, <<2>> de que sea nueva -> <<3>> <<4[llave/llaves]>> por hombrera nueva")
 ZO_CreateStringId("SI_MCH_SWITCH_HINT", "El cofre misterioso sigue siendo más barato hasta que <<1[falte/falten]>> <<1>> <<1[hombrera/hombreras]>> (<<2[queda/quedan]>> <<2>>).")
-ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Ya has pasado el punto de equilibrio: a partir de ahora el cofre específico es más barato.")
+ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Ya has pasado el punto de equilibrio: a partir de ahora el cofre seleccionado es más barato.")
 ZO_CreateStringId("SI_MCH_FINISH", "Completar este vendedor")
-ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[llave/llaves]>> eligiendo bien (todo misterioso <<2>> / todo específico <<3>>)")
+ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[llave/llaves]>> eligiendo bien (todo misterioso <<2>> / todo seleccionado <<3>>)")
 ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Todos los vendedores")
 ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> <<3[llave/llaves]>> por <<2>> <<2[hombrera que falta/hombreras que faltan]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Tienes <<1>> <<1[llave/llaves]>> de los Intrépidos")
@@ -32,7 +32,7 @@ ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "precios supuestos - visita al vended
 
 -- Chat
 ZO_CreateStringId("SI_MCH_CHAT_PREFIX", "Cofre")
-ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - <<3>> <<7[llave/llaves]>> por hombrera nueva frente a <<4>> con el específico (<<5>>/<<6>> conseguidas)")
+ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - <<3>> <<7[llave/llaves]>> por hombrera nueva frente a <<4>> con el seleccionado (<<5>>/<<6>> conseguidas)")
 ZO_CreateStringId("SI_MCH_CHAT_DONE", "<<1>>: tienes todas las hombreras. Guarda tus llaves.")
 
 -- Tooltip
@@ -45,10 +45,10 @@ ZO_CreateStringId("SI_MCH_TT_SET_DONE", "Ya tienes todas las hombreras de este c
 
 -- Purchase confirmation
 ZO_CreateStringId("SI_MCH_GUARD_TITLE", "No es la mejor compra")
-ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Ahora mismo los cofres específicos son más baratos aquí: <<1>> <<3[llave/llaves]>> por hombrera nueva, frente a <<2>> con un cofre misterioso.")
-ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Ahora mismo los cofres misteriosos son más baratos aquí: <<1>> <<3[llave/llaves]>> por hombrera nueva, frente a <<2>> con este cofre específico.")
+ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Ahora mismo los cofres seleccionados son más baratos aquí: <<1>> <<3[llave/llaves]>> por hombrera nueva, frente a <<2>> con un cofre misterioso.")
+ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Ahora mismo los cofres misteriosos son más baratos aquí: <<1>> <<3[llave/llaves]>> por hombrera nueva, frente a <<2>> con este cofre seleccionado.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "Ya tienes todas las hombreras que puede dar este cofre, así que solo puede darte un duplicado.")
-ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "De media, <<2>> <<2[cofre misterioso te lleva/cofres misteriosos te llevan]>> al punto en que los cofres específicos pasan a ser más baratos. Comprar <<1>> de una vez probablemente lo superaría.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "De media, <<2>> <<2[cofre misterioso te lleva/cofres misteriosos te llevan]>> al punto en que los cofres seleccionados pasan a ser más baratos. Comprar <<1>> de una vez probablemente lo superaría.")
 ZO_CreateStringId("SI_MCH_GUARD_BULK_CURATED", "A este cofre solo le <<2[queda/quedan]>> <<2>> <<2[hombrera/hombreras]>> que te <<2[falta/faltan]>>, así que comprar <<1>> te daría al menos <<3>> <<3[duplicado/duplicados]>>.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Comprar de todos modos")
 
@@ -71,7 +71,7 @@ ZO_CreateStringId("SI_MCH_SET_PRICES", "Precios")
 ZO_CreateStringId("SI_MCH_SET_LEARN", "Usar los precios leídos del vendedor")
 ZO_CreateStringId("SI_MCH_SET_LEARN_TT", "Lee el coste real en llaves de la ventana de la tienda y lo recuerda. Desactívalo para usar siempre los valores de abajo.")
 ZO_CreateStringId("SI_MCH_SET_MCOST", "Coste del cofre misterioso (llaves)")
-ZO_CreateStringId("SI_MCH_SET_CCOST", "Coste del cofre específico (llaves)")
+ZO_CreateStringId("SI_MCH_SET_CCOST", "Coste del cofre seleccionado (llaves)")
 ZO_CreateStringId("SI_MCH_SET_COST_TT", "Valor que se usa hasta que el addon haya visto la tienda del vendedor.")
 
 ZO_CreateStringId("SI_MCH_SET_POOL", "Existencias del vendedor")
