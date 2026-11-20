@@ -5,7 +5,7 @@ ZO_CreateStringId("SI_MCH_PANEL_TITLE", "Schultern der Unerschrockenen")
 ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ",")
 
 -- Verdicts
-ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "ZUFALLSTRUHEN kaufen")
+ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "MYSTERIÖSE Truhen kaufen")
 ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "GEZIELTE Truhen kaufen")
 ZO_CreateStringId("SI_MCH_VERDICT_EITHER", "Beide kosten gleich viel")
 ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Sammlung vollständig - nichts kaufen")
@@ -13,13 +13,13 @@ ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Sammlung vollständig - nichts kaufen"
 -- Panel body
 ZO_CreateStringId("SI_MCH_COLLECTED", "Gesammelt")
 ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> <<2[Schulter/Schultern]>> aus <<3>> <<3[Set/Sets]>> (<<4>> offen)")
-ZO_CreateStringId("SI_MCH_MYSTERY", "Zufall")
+ZO_CreateStringId("SI_MCH_MYSTERY", "Mysteriös")
 ZO_CreateStringId("SI_MCH_CURATED", "Gezielt")
 ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> Schlüssel, <<2>> neu -> <<3>> Schlüssel pro neuer Schulter")
-ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Zufallstruhen bleiben günstiger, bis nur noch <<1>> <<1[Schulter fehlt/Schultern fehlen]>> (noch <<2>>).")
+ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Mysteriöse Truhen bleiben günstiger, bis nur noch <<1>> <<1[Schulter fehlt/Schultern fehlen]>> (noch <<2>>).")
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Der Wendepunkt ist erreicht: Ab jetzt sind gezielte Truhen günstiger.")
 ZO_CreateStringId("SI_MCH_FINISH", "Diesen Händler abschließen")
-ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> Schlüssel bei bester Wahl (nur Zufall <<2>> / nur gezielt <<3>>)")
+ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> Schlüssel bei bester Wahl (nur mysteriöse <<2>> / nur gezielte <<3>>)")
 ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Alle Händler")
 ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> Schlüssel für <<2>> <<2[fehlende Schulter/fehlende Schultern]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Ihr habt <<1>> Schlüssel der Unerschrockenen")
@@ -45,10 +45,10 @@ ZO_CreateStringId("SI_MCH_TT_SET_DONE", "Ihr habt bereits jede Schulter aus dies
 
 -- Purchase confirmation
 ZO_CreateStringId("SI_MCH_GUARD_TITLE", "Nicht die beste Wahl")
-ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Gezielte Truhen sind hier gerade günstiger: <<1>> Schlüssel pro neuer Schulter, gegenüber <<2>> für eine Zufallstruhe.")
-ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Zufallstruhen sind hier gerade günstiger: <<1>> Schlüssel pro neuer Schulter, gegenüber <<2>> für diese gezielte Truhe.")
+ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Gezielte Truhen sind hier gerade günstiger: <<1>> Schlüssel pro neuer Schulter, gegenüber <<2>> für eine mysteriöse Truhe.")
+ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Mysteriöse Truhen sind hier gerade günstiger: <<1>> Schlüssel pro neuer Schulter, gegenüber <<2>> für diese gezielte Truhe.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "Ihr habt bereits jede Schulter, die diese Truhe enthalten kann. Sie kann nur ein Duplikat geben.")
-ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "Im Schnitt <<2[bringt/bringen]>> euch <<2>> <<2[Zufallstruhe/Zufallstruhen]>> an den Punkt, ab dem gezielte Truhen günstiger sind. <<1>> auf einmal zu kaufen, geht wahrscheinlich darüber hinaus.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "Im Schnitt <<2[bringt/bringen]>> euch <<2>> <<2[mysteriöse Truhe/mysteriöse Truhen]>> an den Punkt, ab dem gezielte Truhen günstiger sind. <<1>> auf einmal zu kaufen, geht wahrscheinlich darüber hinaus.")
 ZO_CreateStringId("SI_MCH_GUARD_BULK_CURATED", "Aus dieser Truhe <<2[fehlt/fehlen]>> euch nur noch <<2>> <<2[Schulter/Schultern]>>. <<1>> zu kaufen, ergibt mindestens <<3>> <<3[Duplikat/Duplikate]>>.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Trotzdem kaufen")
 
@@ -70,7 +70,7 @@ ZO_CreateStringId("SI_MCH_SET_MAXSETS_TT", "Wie viele unvollständige Sets namen
 ZO_CreateStringId("SI_MCH_SET_PRICES", "Preise")
 ZO_CreateStringId("SI_MCH_SET_LEARN", "Preise vom Händler verwenden")
 ZO_CreateStringId("SI_MCH_SET_LEARN_TT", "Liest die tatsächlichen Schlüsselkosten aus dem Ladenfenster und merkt sie sich. Ausschalten, um immer die Werte unten zu verwenden.")
-ZO_CreateStringId("SI_MCH_SET_MCOST", "Kosten der Zufallstruhe (Schlüssel)")
+ZO_CreateStringId("SI_MCH_SET_MCOST", "Kosten der mysteriösen Truhe (Schlüssel)")
 ZO_CreateStringId("SI_MCH_SET_CCOST", "Kosten der gezielten Truhe (Schlüssel)")
 ZO_CreateStringId("SI_MCH_SET_COST_TT", "Wird verwendet, bis das Addon den Laden des Händlers gesehen hat.")
 
