@@ -5,7 +5,7 @@ ZO_CreateStringId("SI_MCH_PANEL_TITLE", "Épaulières des Indomptables")
 ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ",")
 
 -- Verdicts
-ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Achetez des coffres MYSTÈRE")
+ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Achetez des coffres MYSTÉRIEUX")
 ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Achetez des coffres CIBLÉS")
 ZO_CreateStringId("SI_MCH_VERDICT_EITHER", "Les deux reviennent au même prix")
 ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Collection complète - n'achetez rien")
@@ -13,13 +13,13 @@ ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Collection complète - n'achetez rien"
 -- Panel body
 ZO_CreateStringId("SI_MCH_COLLECTED", "Collection")
 ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "<<1>> / <<2>> <<2[épaulière/épaulières]>> sur <<3>> <<3[ensemble/ensembles]>> (il en manque <<4>>)")
-ZO_CreateStringId("SI_MCH_MYSTERY", "Mystère")
+ZO_CreateStringId("SI_MCH_MYSTERY", "Mystérieux")
 ZO_CreateStringId("SI_MCH_CURATED", "Ciblé")
 ZO_CreateStringId("SI_MCH_LINE_OFFER", "<<1>> <<1[clé/clés]>>, <<2>> de chances d'en avoir une nouvelle -> <<3>> <<4[clé/clés]>> par nouvelle épaulière")
-ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Le coffre mystère reste plus rentable jusqu'à ce qu'il ne manque plus que <<1>> <<1[épaulière/épaulières]>> (encore <<2>>).")
+ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Le coffre mystérieux reste plus rentable jusqu'à ce qu'il ne manque plus que <<1>> <<1[épaulière/épaulières]>> (encore <<2>>).")
 ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Le seuil de rentabilité est franchi : les coffres ciblés sont désormais moins chers.")
 ZO_CreateStringId("SI_MCH_FINISH", "Terminer ce marchand")
-ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[clé/clés]>> en optimisant (tout en mystère <<2>> / tout en ciblé <<3>>)")
+ZO_CreateStringId("SI_MCH_FINISH_LINE", "~<<1>> <<4[clé/clés]>> en optimisant (que des mystérieux <<2>> / que des ciblés <<3>>)")
 ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Tous les marchands")
 ZO_CreateStringId("SI_MCH_ALL_LINE", "~<<1>> <<3[clé/clés]>> pour <<2>> <<2[épaulière manquante/épaulières manquantes]>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Vous possédez <<1>> <<1[clé/clés]>> des Indomptables")
@@ -45,10 +45,10 @@ ZO_CreateStringId("SI_MCH_TT_SET_DONE", "Vous avez déjà toutes les épaulière
 
 -- Purchase confirmation
 ZO_CreateStringId("SI_MCH_GUARD_TITLE", "Pas le meilleur achat")
-ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Les coffres ciblés sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour un coffre mystère.")
-ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Les coffres mystère sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour ce coffre ciblé.")
+ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Les coffres ciblés sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour un coffre mystérieux.")
+ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Les coffres mystérieux sont moins chers ici en ce moment : <<1>> <<3[clé/clés]>> par nouvelle épaulière, contre <<2>> pour ce coffre ciblé.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "Vous avez déjà toutes les épaulières que ce coffre peut donner : vous n'obtiendrez qu'un doublon.")
-ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "En moyenne, <<2>> <<2[coffre mystère suffit/coffres mystère suffisent]>> pour atteindre le point où les coffres ciblés deviennent moins chers. En acheter <<1>> d'un coup le dépasserait probablement.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "En moyenne, <<2>> <<2[coffre mystérieux suffit/coffres mystérieux suffisent]>> pour atteindre le point où les coffres ciblés deviennent moins chers. En acheter <<1>> d'un coup le dépasserait probablement.")
 ZO_CreateStringId("SI_MCH_GUARD_BULK_CURATED", "Il ne vous manque que <<2>> <<2[épaulière/épaulières]>> de ce coffre : en acheter <<1>> donnerait au moins <<3>> <<3[doublon/doublons]>>.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Acheter quand même")
 
@@ -70,7 +70,7 @@ ZO_CreateStringId("SI_MCH_SET_MAXSETS_TT", "Nombre d'ensembles incomplets nommé
 ZO_CreateStringId("SI_MCH_SET_PRICES", "Prix")
 ZO_CreateStringId("SI_MCH_SET_LEARN", "Utiliser les prix relevés chez le marchand")
 ZO_CreateStringId("SI_MCH_SET_LEARN_TT", "Lit le vrai coût en clés dans la boutique et le mémorise. Désactivez cette option pour toujours utiliser les valeurs ci-dessous.")
-ZO_CreateStringId("SI_MCH_SET_MCOST", "Coût du coffre mystère (clés)")
+ZO_CreateStringId("SI_MCH_SET_MCOST", "Coût du coffre mystérieux (clés)")
 ZO_CreateStringId("SI_MCH_SET_CCOST", "Coût du coffre ciblé (clés)")
 ZO_CreateStringId("SI_MCH_SET_COST_TT", "Valeur utilisée tant que l'extension n'a pas vu la boutique du marchand.")
 
