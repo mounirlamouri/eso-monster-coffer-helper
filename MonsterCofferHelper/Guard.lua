@@ -122,13 +122,18 @@ local function OnBuyStoreItem(entryIndex, quantity)
     return true
 end
 
--- A held purchase belongs to the store it was made in.
+-- A held purchase belongs to the store it was made in, shown or still queued.
 local function OnCloseStore()
-    ZO_Dialogs_ReleaseDialog(DIALOG_NAME)
+    ZO_Dialogs_ReleaseAllDialogsOfName(DIALOG_NAME)
 end
 
 function Guard.Initialize()
     ZO_Dialogs_RegisterCustomDialog(DIALOG_NAME, {
+        -- The buy-multiple dialog, and the game's own large-purchase
+        -- confirmation, call BuyStoreItem while they are still on screen. A
+        -- dialog that can't queue is dropped then, and the purchase would be
+        -- held with nothing shown; queued, it shows once theirs closes.
+        canQueue    = true,
         gamepadInfo = { dialogType = GAMEPAD_DIALOGS.BASIC },
         title       = { text = SI_MCH_GUARD_TITLE },
         mainText    = { text = "<<1>>" },

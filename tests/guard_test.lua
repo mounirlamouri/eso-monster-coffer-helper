@@ -140,5 +140,52 @@ do
     check("no duplicates, nothing more to say", none, nil)
 end
 
+print("\na purchase made while another dialog is still on screen")
+do
+    -- The buy-multiple dialog calls BuyStoreItem before it closes. The game
+    -- drops a dialog shown over another unless it can queue, so this stands in
+    -- for that rule and checks the warning still reaches the player.
+    local registered, hook, onScreen, queued, dropped = nil, nil, true, {}, 0
+    local FAKE = {
+        ZO_Dialogs_RegisterCustomDialog = function(_, info) registered = info end,
+        ZO_PreHook = function(_, fn) hook = fn end,
+        ZO_Dialogs_ShowPlatformDialog = function(name, data)
+            if onScreen and not registered.canQueue then
+                dropped = dropped + 1
+            else
+                queued[#queued + 1] = { name = name, data = data }
+            end
+        end,
+        EVENT_MANAGER = { RegisterForEvent = function() end },
+        GAMEPAD_DIALOGS = { BASIC = "basic" },
+        GetString = function(id) return tostring(id) end,
+        zo_strformat = function(format) return tostring(format) end,
+    }
+    local saved = {}
+    for name, value in pairs(FAKE) do
+        saved[name] = rawget(_G, name)
+        _G[name] = value
+    end
+    local savedDb, savedCurrent, savedForVendor = MCH.db, MCH.Store.current, MCH.Advisor.ForVendor
+
+    local ok, err = pcall(function()
+        local result = Result({ 0, 0, 3, 3 })  -- entry 2's sets are complete
+        MCH.db = { confirmPurchases = true }
+        MCH.Store.current = SCAN
+        MCH.Advisor.ForVendor = function() return result end
+
+        Guard.Initialize()
+        check("the warning dialog can queue", registered and registered.canQueue, true)
+        check("buying 5 duplicates is held", hook(2, 5), true)
+        check("and the warning is not dropped", dropped, 0)
+        check("it waits to be shown", #queued, 1)
+        check("with the quantity to buy if confirmed", queued[1] and queued[1].data.quantity, 5)
+    end)
+
+    for name in pairs(FAKE) do _G[name] = saved[name] end
+    MCH.db, MCH.Store.current, MCH.Advisor.ForVendor = savedDb, savedCurrent, savedForVendor
+    if not ok then error(err, 0) end
+end
+
 print(string.format("\n%d check(s), %d failure(s)\n", checks, failures))
 if failures > 0 then error("guard tests failed", 0) end
