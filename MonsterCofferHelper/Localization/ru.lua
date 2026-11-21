@@ -5,21 +5,21 @@ ZO_CreateStringId("SI_MCH_PANEL_TITLE", "Наплечники Неустраши
 ZO_CreateStringId("SI_MCH_DECIMAL_SEPARATOR", ",")
 
 -- Verdicts
-ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Покупайте ТАИНСТВЕННЫЕ сундуки")
-ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Покупайте ИЗБРАННЫЕ сундуки")
+ZO_CreateStringId("SI_MCH_VERDICT_MYSTERY", "Покупайте ЗАГАДОЧНЫЕ сундуки")
+ZO_CreateStringId("SI_MCH_VERDICT_CURATED", "Покупайте СПЕЦИАЛЬНО ПОДОБРАННЫЕ сундуки")
 ZO_CreateStringId("SI_MCH_VERDICT_EITHER", "Оба варианта стоят одинаково")
 ZO_CreateStringId("SI_MCH_VERDICT_DONE", "Коллекция собрана - ничего не покупайте")
 
 -- Panel body
 ZO_CreateStringId("SI_MCH_COLLECTED", "Собрано")
 ZO_CreateStringId("SI_MCH_LINE_COLLECTED", "наплечники: <<1>> / <<2>>, комплекты: <<3>> (не хватает: <<4>>)")
-ZO_CreateStringId("SI_MCH_MYSTERY", "Таинственный")
-ZO_CreateStringId("SI_MCH_CURATED", "Избранный")
+ZO_CreateStringId("SI_MCH_MYSTERY", "Загадочный")
+ZO_CreateStringId("SI_MCH_CURATED", "Специально подобранный")
 ZO_CreateStringId("SI_MCH_LINE_OFFER", "цена: <<1>>, шанс нового: <<2>> -> ключей за новый наплечник: <<3>>")
-ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Таинственный сундук выгоднее, пока недостающих наплечников больше <<1>> (ещё: <<2>>).")
-ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Точка равновесия пройдена: дальше выгоднее избранный сундук.")
+ZO_CreateStringId("SI_MCH_SWITCH_HINT", "Загадочный сундук выгоднее, пока недостающих наплечников больше <<1>> (ещё: <<2>>).")
+ZO_CreateStringId("SI_MCH_SWITCH_NOW", "Точка равновесия пройдена: дальше выгоднее специально подобранный сундук.")
 ZO_CreateStringId("SI_MCH_FINISH", "Завершить этого торговца")
-ZO_CreateStringId("SI_MCH_FINISH_LINE", "ключей при лучшем выборе: ~<<1>> (только таинственные: <<2>> / только избранные: <<3>>)")
+ZO_CreateStringId("SI_MCH_FINISH_LINE", "ключей при лучшем выборе: ~<<1>> (только загадочные: <<2>> / только специально подобранные: <<3>>)")
 ZO_CreateStringId("SI_MCH_ALL_VENDORS", "Все торговцы")
 ZO_CreateStringId("SI_MCH_ALL_LINE", "недостающих наплечников: <<2>>, ключей: ~<<1>>")
 ZO_CreateStringId("SI_MCH_KEYS_HELD", "Ключей Неустрашимых: <<1>>")
@@ -32,7 +32,7 @@ ZO_CreateStringId("SI_MCH_PRICES_ASSUMED", "предполагаемые цен�
 
 -- Chat
 ZO_CreateStringId("SI_MCH_CHAT_PREFIX", "Сундук")
-ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - ключей за новый наплечник: <<3>> против <<4>> у избранного (собрано: <<5>>/<<6>>)")
+ZO_CreateStringId("SI_MCH_CHAT_LINE", "<<1>>: <<2>> - ключей за новый наплечник: <<3>> против <<4>> у специально подобранного (собрано: <<5>>/<<6>>)")
 ZO_CreateStringId("SI_MCH_CHAT_DONE", "<<1>>: все наплечники собраны. Сберегите ключи.")
 
 -- Tooltip
@@ -45,10 +45,10 @@ ZO_CreateStringId("SI_MCH_TT_SET_DONE", "У вас уже есть все нап
 
 -- Purchase confirmation
 ZO_CreateStringId("SI_MCH_GUARD_TITLE", "Не лучшая покупка")
-ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Сейчас здесь дешевле избранные сундуки. Ключей за новый наплечник: <<1>> против <<2>> у таинственного сундука.")
-ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Сейчас здесь дешевле таинственные сундуки. Ключей за новый наплечник: <<1>> против <<2>> у этого избранного сундука.")
+ZO_CreateStringId("SI_MCH_GUARD_MYSTERY_WORSE", "Сейчас здесь дешевле специально подобранные сундуки. Ключей за новый наплечник: <<1>> против <<2>> у загадочного сундука.")
+ZO_CreateStringId("SI_MCH_GUARD_CURATED_WORSE", "Сейчас здесь дешевле загадочные сундуки. Ключей за новый наплечник: <<1>> против <<2>> у этого специально подобранного сундука.")
 ZO_CreateStringId("SI_MCH_GUARD_DUPLICATE", "У вас уже есть все наплечники, которые может дать этот сундук, поэтому из него выпадет только дубликат.")
-ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "В среднем до точки, где избранные сундуки становятся дешевле, нужно таинственных сундуков: <<2>>. Покупка сразу <<1>> шт., скорее всего, выйдет за эту точку.")
+ZO_CreateStringId("SI_MCH_GUARD_BULK_MYSTERY", "В среднем до точки, где специально подобранные сундуки становятся дешевле, нужно загадочных сундуков: <<2>>. Покупка сразу <<1>> шт., скорее всего, выйдет за эту точку.")
 ZO_CreateStringId("SI_MCH_GUARD_BULK_CURATED", "В этом сундуке вам не хватает наплечников: <<2>>, поэтому покупка <<1>> шт. даст как минимум дубликатов: <<3>>.")
 ZO_CreateStringId("SI_MCH_GUARD_BUY", "Всё равно купить")
 
@@ -70,8 +70,8 @@ ZO_CreateStringId("SI_MCH_SET_MAXSETS_TT", "Сколько незавершён�
 ZO_CreateStringId("SI_MCH_SET_PRICES", "Цены")
 ZO_CreateStringId("SI_MCH_SET_LEARN", "Использовать цены торговца")
 ZO_CreateStringId("SI_MCH_SET_LEARN_TT", "Считывает реальную цену в ключах из окна магазина и запоминает её. Выключите, чтобы всегда использовать значения ниже.")
-ZO_CreateStringId("SI_MCH_SET_MCOST", "Цена таинственного сундука (ключи)")
-ZO_CreateStringId("SI_MCH_SET_CCOST", "Цена избранного сундука (ключи)")
+ZO_CreateStringId("SI_MCH_SET_MCOST", "Цена загадочного сундука (ключи)")
+ZO_CreateStringId("SI_MCH_SET_CCOST", "Цена специально подобранного сундука (ключи)")
 ZO_CreateStringId("SI_MCH_SET_COST_TT", "Используется, пока аддон не увидел магазин торговца.")
 
 ZO_CreateStringId("SI_MCH_SET_POOL", "Ассортимент торговца")
